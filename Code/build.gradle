@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
 }
 
 group 'ch.bbcag'
@@ -17,3 +19,7 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+javafx {
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.graphics']
+}
+mainClassName = 'Test'
