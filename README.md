@@ -4,7 +4,7 @@ PongPlusPlus (Pong++) handelt sich um ein Player VS PC Pong spiel mit Fähigkeit
 
 
 
-![PongPlusPlus Design](https://git.bbcag.ch/inf-bl/zh/2020/applikationsentwicklung/andreas/pongplusplus/-/blob/master/pongplusplus%20design.png)
+![PongPlusPlus Design](https://git.bbcag.ch/inf-bl/zh/2020/applikationsentwicklung/andreas/pongplusplus/-/blob/master/pongplusplus%20design.png?raw=true)
 
 ## Authors
 
