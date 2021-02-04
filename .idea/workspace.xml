@@ -1,7 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7df8f44d-652b-4cbb-b2d5-6ab4e2bec728" name="Default Changelist" comment="" />
+    <list default="true" id="7df8f44d-652b-4cbb-b2d5-6ab4e2bec728" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/PongPlusPlus/src/main/java/pongplusplus/game/Images.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PongPlusPlus/src/main/java/pongplusplus/gui/GameOverScene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PongPlusPlus/src/main/java/pongplusplus/gui/InGameScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.gradle/6.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.gradle/6.7/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.gradle/6.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.gradle/6.7/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.gradle/6.7/fileChanges/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.gradle/6.7/fileChanges/last-build.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.gradle/6.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.gradle/6.7/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.gradle/6.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.gradle/6.7/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.gradle/6.7/gc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.gradle/6.7/gc.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.gradle/configuration-cache/gc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.gradle/configuration-cache/gc.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.gradle/vcs-1/gc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.idea/modules/PongPlusPlus.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.idea/modules/PongPlusPlus.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/resources/ball.png" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/resources/ball.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/resources/plate.png" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/resources/plate.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/resources/welcomescene.png" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/resources/welcomescene.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/src/main/java/pongplusplus/common/Scenes.java" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/src/main/java/pongplusplus/common/SceneType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/src/main/java/pongplusplus/gui/WelcomeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/src/main/java/pongplusplus/gui/WelcomeScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/src/main/java/pongplusplus/main/Navigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/src/main/java/pongplusplus/main/Navigator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/src/main/java/pongplusplus/main/PongPlusPlusApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/PongPlusPlus/src/main/java/pongplusplus/main/PongPlusPlusApp.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,16 +63,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Code" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
+    <configuration name="App" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="15" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <module name="pongplusplus" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -47,6 +84,8 @@
       <option name="presentableId" value="Default" />
       <updated>1612360878567</updated>
       <workItem from="1612360881326" duration="1444000" />
+      <workItem from="1612425427577" duration="347000" />
+      <workItem from="1612427133132" duration="10000" />
     </task>
     <servers />
   </component>
@@ -63,5 +102,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

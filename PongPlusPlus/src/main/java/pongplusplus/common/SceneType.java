@@ -1,7 +1,7 @@
 package pongplusplus.common;
 
-public enum Scenes {
-    GAMESTART,
+public enum SceneType {
+    WELCOME,
     INGAME,
     GAMEOVER
 }
