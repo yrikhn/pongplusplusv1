@@ -19,7 +19,11 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
 javafx {
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.graphics']
 }
-mainClassName = 'Test'
+javafx {
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.graphics']
+}
+mainClassName = 'pongplusplus.PongPlusPlusApp.java'
