@@ -4,11 +4,12 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import pongplusplus.common.Navigator;
 import pongplusplus.common.SceneType;
+import pongplusplus.game.Const;
 import pongplusplus.gui.GameOverScene;
 import pongplusplus.gui.InGameScene;
 import pongplusplus.gui.WelcomeScene;
 
-public class PongPlusPlusApp extends Application {
+public class  PongPlusPlusApp extends Application {
 
     @Override
     public void start(Stage stage) {
@@ -20,10 +21,10 @@ public class PongPlusPlusApp extends Application {
         navigator.registerScene(SceneType.INGAME, new InGameScene(navigator));
         navigator.registerScene(SceneType.GAMEOVER, new GameOverScene(navigator));
         navigator.goTo(SceneType.WELCOME);
-        stage.setMinHeight(400);
-        stage.setMaxHeight(400);
-        stage.setMinWidth(700);
-        stage.setMaxWidth(700);
+        stage.setMinHeight(Const.SCREEN_HEIGHT);
+        stage.setMaxHeight(Const.SCREEN_HEIGHT);
+        stage.setMinWidth(Const.SCREEN_WIDTH);
+        stage.setMaxWidth(Const.SCREEN_WIDTH);
         stage.show();
     }
     public static void main(String[] args) {
