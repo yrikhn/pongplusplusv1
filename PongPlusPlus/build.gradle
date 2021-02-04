@@ -26,4 +26,4 @@ javafx {
 javafx {
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.graphics']
 }
-mainClassName = 'pongplusplus.main.Launcher.java'
+mainClassName = 'pongplusplus.main.PongPlusPlusApp'

@@ -1,9 +1,8 @@
-package pongplusplus.main;
+package pongplusplus.common;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pongplusplus.common.SceneType;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,11 +13,12 @@ public class Navigator {
     public Navigator(Stage stage) {
         this.stage = stage;
     }
-    public void registerScene(SceneType sceneType, Scene scene) {
-        sceneMap.put(sceneType, scene);
+    public void registerScene(SceneType enumScene, Scene scene) {
+        sceneMap.put(enumScene, scene);
     }
-    public void navigateTo(SceneType sceneType) {
-        stage.setScene(sceneMap.get(sceneType));
-        stage.show();
+    public void goTo(SceneType scene) {
+        Scene activeScene = sceneMap.get(scene);
+        stage.setScene(activeScene);
     }
-}
+
+    }
