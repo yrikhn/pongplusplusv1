@@ -19,42 +19,43 @@ public class Ball extends Gameobject{
     @Override
     public void update(double deltaInSec) {
         pos_x += balldirx;
-                pos_y += balldiry;
+        pos_y += balldiry;
+
+        board.getPoint().checkWon();
+
+        if(pos_y + 14 >= Const.SCREEN_HEIGHT){
+            balldiry = -3;
+        }
+
+        if(pos_y <= 61){
+            balldiry = 3;
+        }
+
+        if(pos_x +20 >= Const.SCREEN_WIDTH){
+
+            pos_x = Const.SCREEN_WIDTH /2 -10;
+            pos_y = Const.SCREEN_HEIGHT /2 -10;
+
+            balldirx = -3;
+            board.getPoint().addGegnerPoints();
 
 
-                if(pos_y + 14 >= Const.SCREEN_HEIGHT){
-                    balldiry = -3;
-                }
+        }
 
-                if(pos_y <= 61){
-                    balldiry = 3;
-                }
+        if(pos_x <= 0){
 
-                if(pos_x +20 >= Const.SCREEN_WIDTH){
+            pos_x = Const.SCREEN_WIDTH /2 -10;
+            pos_y = Const.SCREEN_HEIGHT /2 -10;
 
-                    pos_x = Const.SCREEN_WIDTH /2 -10;
-                    pos_y = Const.SCREEN_HEIGHT /2 -10;
+            balldirx = 3;
+            board.getPoint().addPlayerPoints();
 
-                    balldirx = -3;
-                    board.gegnerPoints += 1;
-
-
-                }
-
-                if(pos_x <= 0){
-
-                    pos_x = Const.SCREEN_WIDTH /2 -10;
-                    pos_y = Const.SCREEN_HEIGHT /2 -10;
-
-                    balldirx = 3;
-                    board.playerPoints += 1;
-
-                }
+        }
                 
 
-                if(pos_x < board.getPlate().pos_x && pos_x > board.getPlate().pos_x -20 && pos_y -20 < board.getPlate().pos_y + 57 && pos_y > board.getPlate().pos_y){
-                    balldirx = -3;
-                }
+        if(pos_x < board.getPlate().pos_x && pos_x > board.getPlate().pos_x -20 && pos_y -20 < board.getPlate().pos_y + 57 && pos_y > board.getPlate().pos_y){
+            balldirx = -3;
+        }
 
     }
 }

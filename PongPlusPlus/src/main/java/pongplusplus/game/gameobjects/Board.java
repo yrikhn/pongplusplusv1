@@ -8,17 +8,18 @@ import pongplusplus.common.Util;
 import pongplusplus.game.Const;
 import pongplusplus.game.Images;
 import pongplusplus.game.KeyEventHandler;
-import java.util.Random;
-import java.util.concurrent.CopyOnWriteArrayList;
-import pongplusplus.game.gameobjects.Ball;
+import pongplusplus.game.Points;
 
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Board extends CopyOnWriteArrayList<Gameobject> {
     private KeyEventHandler keyEventHandler;
     private Navigator navigator;
-    double randNumb = new Random().nextInt(539);
-    public int playerPoints;
-    public int gegnerPoints;
+    private Points point = new Points();
+
+    public Points getPoint() {
+        return point;
+    }
 
     public Board(Navigator navigator, KeyEventHandler keyEventHandler) {
         this.navigator = navigator;
@@ -44,9 +45,8 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         gc.fillRect(0,50,1000,11);
 
         gc.setFont(new Font(40));
-        gc.fillText("" + playerPoints, 460, 35);
-        gc.fillText("" + gegnerPoints, 517, 35);
-
+        gc.fillText("" + point.gegnerPoints, 440, 35);
+        gc.fillText("" + point.playerPoints, 530, 35);
 
         getBall().draw(gc);
         getPlate().draw(gc);
