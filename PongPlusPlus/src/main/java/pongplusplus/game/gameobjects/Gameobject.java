@@ -20,4 +20,5 @@ public abstract class Gameobject {
     public void draw(GraphicsContext gc){
         gc.drawImage(image,pos_x,pos_y);
     }
+
 }

@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
 import pongplusplus.common.Navigator;
 import pongplusplus.common.Util;
+import pongplusplus.game.Const;
 import pongplusplus.game.Images;
 import pongplusplus.game.KeyEventHandler;
 import java.util.Random;
@@ -21,7 +22,7 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         this.keyEventHandler = keyEventHandler;
     }
     public void load(){
-        add(new Ball(493, randNumb + 61, Images.ball));
+        add(new Ball(Const.SCREEN_WIDTH / 2, Const.SCREEN_WIDTH / 2, Images.ball, this));
         add(new Plate(keyEventHandler, 970,280, Images.plate));
     }
 
