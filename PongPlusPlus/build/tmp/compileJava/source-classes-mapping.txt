@@ -19,16 +19,16 @@ pongplusplus/common/SceneType.java
  pongplusplus.common.SceneType
 pongplusplus/game/Images.java
  pongplusplus.game.Images
-pongplusplus/gui/WelcomeScene.java
- pongplusplus.gui.WelcomeScene
-pongplusplus/common/Navigator.java
- pongplusplus.common.Navigator
 pongplusplus/game/gameobjects/Board.java
  pongplusplus.game.gameobjects.Board
+pongplusplus/common/Navigator.java
+ pongplusplus.common.Navigator
 pongplusplus/game/Points.java
  pongplusplus.game.Points
 pongplusplus/game/gameobjects/Ball.java
  pongplusplus.game.gameobjects.Ball
+pongplusplus/gui/WelcomeScene.java
+ pongplusplus.gui.WelcomeScene
 pongplusplus/main/PongPlusPlusApp.java
  pongplusplus.main.PongPlusPlusApp
 pongplusplus/gui/InGameScene.java

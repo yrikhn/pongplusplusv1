@@ -14,10 +14,9 @@ public class InGameScene extends BaseScene {
 
     public InGameScene(Navigator navigator) {
         super(navigator);
-        onInitialize();
     }
 
-    public void onInitialize() {
+    public void init() {
 
 
         KeyEventHandler keyEventHandler = new KeyEventHandler();
@@ -28,6 +27,7 @@ public class InGameScene extends BaseScene {
 
 
         board.load();
+
         gameLoop = new GodLikeAnimationTimer() {
             @Override
             public void doHandle(double deltaInSec) {

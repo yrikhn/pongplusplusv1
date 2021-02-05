@@ -16,7 +16,8 @@ public class Navigator {
         sceneMap.put(enumScene, scene);
     }
     public void goTo(SceneType scene) {
-        Scene activeScene = sceneMap.get(scene);
+        Initializable activeScene = sceneMap.get(scene);
+        activeScene.onI();
         stage.setScene(activeScene);
     }
 
