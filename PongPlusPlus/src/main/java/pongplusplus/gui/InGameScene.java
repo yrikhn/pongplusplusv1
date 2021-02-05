@@ -17,11 +17,6 @@ public class InGameScene extends BaseScene {
     }
 
     public void onInitialize() {
-        gc.setFill(Paint.valueOf("#000000"));
-        gc.fillRect(0,0,1000,600);
-        gc.setFill(Paint.valueOf("#FFFFFF"));
-        gc.fillRect(494.5,0,11,600);
-        gc.fillRect(0,50,1000,11);
 
 
         KeyEventHandler keyEventHandler = new KeyEventHandler();
@@ -33,6 +28,8 @@ public class InGameScene extends BaseScene {
         gameLoop = new GodLikeAnimationTimer() {
             @Override
             public void doHandle(double deltaInSec) {
+
+
                 board.update(deltaInSec);
                 board.draw(gc);
             }

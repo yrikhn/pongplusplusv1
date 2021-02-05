@@ -2,7 +2,6 @@ package pongplusplus.game.gameobjects;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import pongplusplus.game.Images;
 
 public abstract class Gameobject {
 

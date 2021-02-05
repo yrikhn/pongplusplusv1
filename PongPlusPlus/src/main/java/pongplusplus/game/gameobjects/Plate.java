@@ -6,7 +6,7 @@ import pongplusplus.game.KeyEventHandler;
 public class Plate extends Gameobject{
 
     private KeyEventHandler keyEventHandler;
-    private double SPEED = 100;
+    private double SPEED = 250;
 
     public Plate(KeyEventHandler keyEventHandler, double x, double y, Image image){
         super(x,y,image);
@@ -19,9 +19,9 @@ public class Plate extends Gameobject{
     }
 
     private void handleAction(double deltaInSec){
-        if (keyEventHandler.isUpKeyPressed()) {
+        if (keyEventHandler.isUpKeyPressed() && pos_y > 61 ) {
             pos_y -= deltaInSec*SPEED;
-        }else if (keyEventHandler.isDownKeyPressed()){
+        }else if (keyEventHandler.isDownKeyPressed() && pos_y < 543){
             pos_y += deltaInSec*SPEED;
         }
     }

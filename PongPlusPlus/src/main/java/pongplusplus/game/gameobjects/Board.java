@@ -1,6 +1,7 @@
 package pongplusplus.game.gameobjects;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Paint;
 import pongplusplus.common.Navigator;
 import pongplusplus.common.Util;
 import pongplusplus.game.Images;
@@ -30,6 +31,12 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
     }
 
     public void draw(GraphicsContext gc) {
+        gc.clearRect(0, 0, pongplusplus.game.Const.SCREEN_WIDTH, pongplusplus.game.Const.SCREEN_HEIGHT);
+        gc.setFill(Paint.valueOf("#000000"));
+        gc.fillRect(0,0,1000,600);
+        gc.setFill(Paint.valueOf("#FFFFFF"));
+        gc.fillRect(494.5,0,11,600);
+        gc.fillRect(0,50,1000,11);
         getBall().draw(gc);
         getPlate().draw(gc);
     }
