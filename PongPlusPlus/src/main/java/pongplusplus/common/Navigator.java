@@ -2,7 +2,6 @@ package pongplusplus.common;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import pongplusplus.common.SceneType;
 import java.util.HashMap;
 import java.util.Map;
 

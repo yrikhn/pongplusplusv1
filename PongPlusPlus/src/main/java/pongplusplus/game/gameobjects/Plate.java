@@ -13,6 +13,7 @@ public class Plate extends Gameobject{
         this.keyEventHandler = keyEventHandler;
     }
 
+
     @Override
     public void update(double deltaInSec) {
         handleAction(deltaInSec);
