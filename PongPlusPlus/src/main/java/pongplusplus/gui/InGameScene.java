@@ -1,43 +1,31 @@
 package pongplusplus.gui;
 
-import javafx.scene.paint.Paint;
-import pongplusplus.common.BaseScene;
-import pongplusplus.common.GodLikeAnimationTimer;
-import pongplusplus.common.Navigator;
-import pongplusplus.common.SceneType;
+import pongplusplus.common.*;
 import pongplusplus.game.KeyEventHandler;
 import pongplusplus.game.gameobjects.Board;
 
-public class InGameScene extends BaseScene {
+public class InGameScene extends BaseScene implements Initializable {
 
     private GodLikeAnimationTimer gameLoop;
 
     public InGameScene(Navigator navigator) {
         super(navigator);
+
     }
-
-    public void init() {
-
-
+    @Override
+    public void onInitialize() {
         KeyEventHandler keyEventHandler = new KeyEventHandler();
+
         this.setOnKeyPressed(keyEventHandler);
         this.setOnKeyReleased(keyEventHandler);
 
-        Board board = new Board(navigator, keyEventHandler);
+        Board board = new Board(keyEventHandler, navigator,() -> gameLoop.stop());
 
-
-        board.load();
+        board.generateObject();
 
         gameLoop = new GodLikeAnimationTimer() {
             @Override
             public void doHandle(double deltaInSec) {
-                if (board.getPoint().playerWon) {
-                    navigator.goTo(SceneType.GAMEOVER);
-                }
-
-                if (board.getPoint().gegnerWon) {
-                    navigator.goTo(SceneType.GAMEOVER);
-                }
 
                 board.update(deltaInSec);
                 board.draw(gc);

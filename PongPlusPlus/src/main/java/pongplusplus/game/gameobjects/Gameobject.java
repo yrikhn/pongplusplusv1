@@ -21,4 +21,11 @@ public abstract class Gameobject {
         gc.drawImage(image,pos_x,pos_y);
     }
 
+    public double getPos_x() {
+        return pos_x;
+    }
+
+    public double getPos_y() {
+        return pos_y;
+    }
 }

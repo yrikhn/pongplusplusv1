@@ -7,7 +7,6 @@ public class KeyEventHandler implements EventHandler<KeyEvent> {
 
     private boolean isUpKeyPressed = false;
     private boolean isDownKeyPressed = false;
-    private boolean isSpaceKeyPressed = false;
 
     @Override
     public void handle(KeyEvent event) {
@@ -18,9 +17,6 @@ public class KeyEventHandler implements EventHandler<KeyEvent> {
                 break;
             case UP:
                 isUpKeyPressed = pressed;
-                break;
-            case SPACE:
-                isSpaceKeyPressed = pressed;
                 break;
         }
     }
@@ -33,7 +29,4 @@ public class KeyEventHandler implements EventHandler<KeyEvent> {
         return isDownKeyPressed;
     }
 
-    public boolean isSpaceKeyPressed() {
-        return isSpaceKeyPressed;
-    }
 }

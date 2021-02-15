@@ -1,20 +1,23 @@
 package pongplusplus.game.gameobjects;
 
-import javafx.scene.image.Image;
-import javafx.scene.text.Text;
 import pongplusplus.game.Const;
+import pongplusplus.game.Images;
 
 
 public class Ball extends Gameobject{
+    private double SPEED;
     private Board board;
-    private int balldirx = 3, balldiry = -3;
+    private double balldirx;
+    private double balldiry;
 
 
-    public Ball(double x, double y, Image image, Board board){
-        super(x,y, image);
+    public Ball(double x, double y, Board board, double speed){
+        super(x,y, Images.ball);
         this.board = board;
+        this.SPEED = speed;
+        this.balldirx = speed;
+        this.balldiry = -speed;
     }
-
 
     @Override
     public void update(double deltaInSec) {
@@ -22,21 +25,19 @@ public class Ball extends Gameobject{
         pos_y += balldiry;
 
         board.getPoint().checkWon();
+        borderCollisionCheck();
+        directionSwitch();
+        checkWin();
 
-        if(pos_y + 14 >= Const.SCREEN_HEIGHT){
-            balldiry = -3;
-        }
+    }
 
-        if(pos_y <= 61){
-            balldiry = 3;
-        }
-
+    private void checkWin(){
         if(pos_x +20 >= Const.SCREEN_WIDTH){
 
             pos_x = Const.SCREEN_WIDTH /2 -10;
             pos_y = Const.SCREEN_HEIGHT /2 -10;
 
-            balldirx = -3;
+            balldirx = -SPEED;
             board.getPoint().addGegnerPoints();
 
 
@@ -51,11 +52,22 @@ public class Ball extends Gameobject{
             board.getPoint().addPlayerPoints();
 
         }
-                
+    }
 
-        if(pos_x < board.getPlate().pos_x && pos_x > board.getPlate().pos_x -20 && pos_y -20 < board.getPlate().pos_y + 57 && pos_y > board.getPlate().pos_y){
-            balldirx = -3;
+
+    private void borderCollisionCheck(){
+        if(pos_y + 14 >= Const.SCREEN_HEIGHT){
+            balldiry = -SPEED;
         }
 
+        if(pos_y <= 61){
+            balldiry = SPEED;
+        }
     }
+    private void directionSwitch(){
+        if(pos_x < board.getRemotablePlatePlate().pos_x && pos_x > board.getRemotablePlatePlate().pos_x -20 && pos_y -20 < board.getRemotablePlatePlate().pos_y + 57 && pos_y > board.getRemotablePlatePlate().pos_y){
+            balldirx = -SPEED;
+        }
+    }
+
 }
