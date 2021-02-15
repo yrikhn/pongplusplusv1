@@ -35,8 +35,8 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
 
     public void update(double deltaInSec){
         getBall().update(deltaInSec);
-        getRemotablePlatePlate().update(deltaInSec);
-        getComputerePlatePlate().update(deltaInSec);
+        getRemotablePlate().update(deltaInSec);
+        getComputerPlate().update(deltaInSec);
         if (getPoint().playerWon) {
             navigator.goTo(SceneType.GAMEOVER);
             stop();
@@ -65,10 +65,10 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
     public Ball getBall() {
         return Util.getAllObjectsFromType(Ball.class, this).get(0);
     }
-    public RemotablePlate getRemotablePlatePlate() {
+    public RemotablePlate getRemotablePlate() {
         return Util.getAllObjectsFromType(RemotablePlate.class, this).get(0);
     }
-    public ComputerPlate getComputerePlatePlate() {
+    public ComputerPlate getComputerPlate() {
         return Util.getAllObjectsFromType(ComputerPlate.class, this).get(0);
     }
     public Points getPoint() {
@@ -79,4 +79,5 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         gameLoopStopper.run();
         clear();
     }
+
 }

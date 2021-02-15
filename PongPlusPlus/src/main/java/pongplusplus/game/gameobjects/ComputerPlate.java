@@ -12,23 +12,19 @@ public class ComputerPlate extends Gameobject{
 
     @Override
     public void update(double deltaInSec) {
-         if (board.getBall().getPos_x() >= Const.SCREEN_WIDTH/2-10){
+         if (board.getBall().getPos_x() <= Const.SCREEN_WIDTH/3*2){
 
-         if(board.getBall().getPos_y() == pos_y)   {
+            if(board.getBall().getPos_y() == pos_y)   {
 
-         }else if (board.getBall().getPos_y() > pos_y){
-             if(pos_y <= Const.SCREEN_HEIGHT - 200){
-                 pos_y += deltaInSec*250;
-
-
-             }else if(board.getBall().getPos_y() < pos_y+75){
-                 if (pos_y >= 20){
-                     pos_y -= deltaInSec*250;
-                 }
-             }
-
-
-         }
+            }else if (board.getBall().getPos_y() > pos_y){
+                if(pos_y < Const.SCREEN_HEIGHT - 200) {
+                    pos_y += deltaInSec * 250;
+                }
+            }else if(board.getBall().getPos_y() < pos_y+57){
+                if(pos_y > 20) {
+                    pos_y -= deltaInSec * 250;
+                }
+            }
          }
     }
 }

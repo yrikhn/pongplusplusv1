@@ -26,7 +26,7 @@ public class Ball extends Gameobject{
 
         board.getPoint().checkWon();
         borderCollisionCheck();
-        directionSwitch();
+        plateCollisionCheck();
         checkWin();
 
     }
@@ -64,8 +64,10 @@ public class Ball extends Gameobject{
             balldiry = SPEED;
         }
     }
-    private void directionSwitch(){
-        if(pos_x < board.getRemotablePlatePlate().pos_x && pos_x > board.getRemotablePlatePlate().pos_x -20 && pos_y -20 < board.getRemotablePlatePlate().pos_y + 57 && pos_y > board.getRemotablePlatePlate().pos_y){
+    private void plateCollisionCheck(){
+        if(pos_x < board.getRemotablePlate().pos_x && pos_x > board.getRemotablePlate().pos_x -20 && pos_y -20 < board.getRemotablePlate().pos_y + 57 && pos_y > board.getRemotablePlate().pos_y){
+            balldirx = -SPEED;
+        }else if (pos_x < board.getComputerPlate().pos_x && pos_x > board.getComputerPlate().pos_x +20 && pos_y +20 < board.getComputerPlate().pos_y - 57 && pos_y > board.getComputerPlate().pos_y){
             balldirx = -SPEED;
         }
     }
