@@ -48,7 +48,7 @@ public class Ball extends Gameobject{
             pos_x = Const.SCREEN_WIDTH /2 -10;
             pos_y = Const.SCREEN_HEIGHT /2 -10;
 
-            balldirx = 3;
+            balldirx = SPEED;
             board.getPoint().addPlayerPoints();
 
         }
@@ -60,15 +60,15 @@ public class Ball extends Gameobject{
             balldiry = -SPEED;
         }
 
-        if(pos_y <= 61){
+        if(pos_y <= 52){
             balldiry = SPEED;
         }
     }
     private void plateCollisionCheck(){
-        if(pos_x < board.getRemotablePlate().pos_x && pos_x > board.getRemotablePlate().pos_x -20 && pos_y -20 < board.getRemotablePlate().pos_y + 57 && pos_y > board.getRemotablePlate().pos_y){
+        if(pos_x < board.getRemotablePlate().pos_x + 5 && pos_x > board.getRemotablePlate().pos_x -20 && pos_y - 14 < board.getRemotablePlate().pos_y + 57 && pos_y > board.getRemotablePlate().pos_y){
             balldirx = -SPEED;
-        }else if (pos_x < board.getComputerPlate().pos_x && pos_x > board.getComputerPlate().pos_x +20 && pos_y +20 < board.getComputerPlate().pos_y - 57 && pos_y > board.getComputerPlate().pos_y){
-            balldirx = -SPEED;
+        } else if(pos_x < board.getComputerPlate().pos_x && pos_x > board.getComputerPlate().pos_x - 20 && pos_y - 14 < board.getComputerPlate().pos_y + 57 && pos_y > board.getComputerPlate().pos_y){
+            balldirx = SPEED;
         }
     }
 

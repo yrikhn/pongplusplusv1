@@ -23,4 +23,13 @@ public class Points {
             gegnerWon = true;
         }
     }
+
+    public boolean isPlayerWon() {
+        return playerWon;
+    }
+
+    public boolean isGegnerWon() {
+        return gegnerWon;
+    }
+
 }
