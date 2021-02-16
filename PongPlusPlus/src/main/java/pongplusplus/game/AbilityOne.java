@@ -1,18 +1,11 @@
 package pongplusplus.game;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.util.Duration;
-import pongplusplus.game.gameobjects.Ball;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import pongplusplus.game.gameobjects.Ball;
 
 public class AbilityOne {
     private final double pos_x;
-    private double cooldown;
+    private double cooldown = 0;
     private Ball ball;
     private double startTime = 10;
     private boolean active = false;
@@ -22,38 +15,33 @@ public class AbilityOne {
         this.pos_x = pos_x;
     }
 
-    public void activate() {
-        active = true;
-    }
 
-    public double getStartTime() {
-        return startTime;
-    }
+    public void update(double deltaInSec) {
+        startTime -= deltaInSec;
 
-    public boolean isActive() {
-        return active;
-    }
+        if (cooldown >= 0){
+            cooldown -= deltaInSec;
+        }
+        if (active) {
+            if (startTime > 0) {
 
-    public void update(double deltaTime) {
-        System.out.println(startTime - deltaTime);
-        startTime -= deltaTime;
-
-        if (startTime > 0) {
-            System.out.println("test");
-            if (pos_x == 970) {
-                if (ball.getPos_x() > Const.SCREEN_WIDTH / 2 + 14) {
-                    ball.setSPEED(2);
-                } else if (ball.getPos_x() < Const.SCREEN_WIDTH / 2 + 14) {
-                    ball.setSPEED(5);
-                }
-            } else {
-                if (ball.getPos_x() < Const.SCREEN_WIDTH / 2 + 14) {
-                    ball.setSPEED(2);
-                } else if (ball.getPos_x() > Const.SCREEN_WIDTH / 2 + 14) {
-                    ball.setSPEED(5);
+                System.out.println("test");
+                if (pos_x == 970) {
+                    if (ball.getPos_x() > Const.SCREEN_WIDTH / 2 + 14) {
+                        ball.setSPEED(2);
+                    } else if (ball.getPos_x() < Const.SCREEN_WIDTH / 2 + 14) {
+                        ball.setSPEED(5);
+                    }
+                } else {
+                    if (ball.getPos_x() < Const.SCREEN_WIDTH / 2 + 14) {
+                        ball.setSPEED(2);
+                    } else if (ball.getPos_x() > Const.SCREEN_WIDTH / 2 + 14) {
+                        ball.setSPEED(5);
+                    }
                 }
             }
         }
+
         if (startTime <= 0) {
             ball.resetSpeed();
             active = false;
@@ -61,5 +49,15 @@ public class AbilityOne {
         }
 
     }
+    public void activate() {
+        active = true;
+    }
 
+    public double getCooldown() {
+        return cooldown;
+    }
+
+    public void setCooldown(double cooldown) {
+        this.cooldown = cooldown;
+    }
 }

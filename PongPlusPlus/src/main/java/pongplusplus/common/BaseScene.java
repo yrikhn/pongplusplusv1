@@ -26,7 +26,7 @@ public abstract class BaseScene extends Scene {
         drawBackgroundImage(backgroundImage);
     }
 
-    private void drawBackgroundImage(Image backgroundImage){
+    protected void drawBackgroundImage(Image backgroundImage){
         gc.drawImage(backgroundImage, 0, 0);
     }
 }

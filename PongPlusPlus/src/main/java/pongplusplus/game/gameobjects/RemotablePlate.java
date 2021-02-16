@@ -4,6 +4,8 @@ import pongplusplus.game.AbilityOne;
 import pongplusplus.game.Images;
 import pongplusplus.game.KeyEventHandler;
 
+import java.sql.SQLOutput;
+
 public class RemotablePlate extends Gameobject {
 
     private KeyEventHandler keyEventHandler;
@@ -25,11 +27,13 @@ public class RemotablePlate extends Gameobject {
         } else if (keyEventHandler.isDownKeyPressed() && pos_y < 541) {
             pos_y += deltaInSec * SPEED;
         }
-        if (keyEventHandler.isQKeyPressed()) {
+        if (keyEventHandler.isQKeyPressed() && abilityOne.getCooldown() <= 0) {
             abilityOne.activate();
-        } else if (abilityOne.isActive()) {
-            System.out.println(abilityOne.isActive());
-            abilityOne.update(deltaInSec);
+            abilityOne.setCooldown(20);
         }
+        System.out.println(abilityOne.getCooldown());
+
+
+        abilityOne.update(deltaInSec);
     }
 }

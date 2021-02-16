@@ -15,11 +15,11 @@ public class Points {
     }
 
     public void checkWon() {
-        if (playerPoints == 10) {
+        if (playerPoints == 2) {
             playerWon = true;
         }
 
-        if (gegnerPoints == 10) {
+        if (gegnerPoints == 2) {
             gegnerWon = true;
         }
     }

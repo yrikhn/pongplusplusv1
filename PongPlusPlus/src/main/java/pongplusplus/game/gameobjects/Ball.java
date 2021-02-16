@@ -26,7 +26,7 @@ public class Ball extends Gameobject {
 
     @Override
     public void update(double deltaInSec) {
-
+        setSPEED(SPEED);
         points.checkWon();
         borderCollisionCheck();
         plateCollisionCheck();
@@ -37,7 +37,7 @@ public class Ball extends Gameobject {
 
     public void resetSpeed() {
         SPEED = originalSpeed;
-    };
+    }
 
     private void checkWin() {
         if (pos_x + 20 >= Const.SCREEN_WIDTH) {
