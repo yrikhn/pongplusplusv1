@@ -23,7 +23,8 @@ public class Points {
             gegnerWon = true;
         }
     }
-    public void resetPoint(){
+
+    public void resetPoint() {
         playerPoints = 0;
         gegnerPoints = 0;
         playerWon = false;
