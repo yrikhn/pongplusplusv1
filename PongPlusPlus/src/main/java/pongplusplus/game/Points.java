@@ -1,10 +1,10 @@
 package pongplusplus.game;
 
 public class Points {
-    public int gegnerPoints = 9;
-    public int playerPoints;
-    public boolean playerWon = false;
-    public boolean gegnerWon = false;
+    private int gegnerPoints;
+    private int playerPoints;
+    private boolean playerWon = false;
+    private boolean gegnerWon = false;
 
     public void addPlayerPoints() {
         playerPoints += 1;
@@ -23,6 +23,12 @@ public class Points {
             gegnerWon = true;
         }
     }
+    public void resetPoint(){
+        playerPoints = 0;
+        gegnerPoints = 0;
+        playerWon = false;
+        gegnerWon = false;
+    }
 
     public boolean isPlayerWon() {
         return playerWon;
@@ -32,4 +38,11 @@ public class Points {
         return gegnerWon;
     }
 
+    public int getGegnerPoints() {
+        return gegnerPoints;
+    }
+
+    public int getPlayerPoints() {
+        return playerPoints;
+    }
 }

@@ -15,20 +15,23 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Board extends CopyOnWriteArrayList<Gameobject> {
     private KeyEventHandler keyEventHandler;
-    private Points point = new Points();
     private Navigator navigator;
     private Runnable gameLoopStopper;
+    private Points points;
+    private Difficulty difficulty;
 
 
-
-    public Board(KeyEventHandler keyEventHandler, Navigator navigator, Runnable gameLoopStopper) {
+    public Board(KeyEventHandler keyEventHandler, Navigator navigator, Runnable gameLoopStopper, Points points, Difficulty difficulty) {
         this.keyEventHandler = keyEventHandler;
         this.gameLoopStopper = gameLoopStopper;
         this.navigator = navigator;
+        this.points = points;
+        this.difficulty = difficulty;
     }
+
     public void generateObject(){
-        add(new Ball(Const.SCREEN_WIDTH / 2, Const.SCREEN_WIDTH / 2, this, Difficulty.getDifficulty()));
-        add(new RemotablePlate(keyEventHandler, 970,280));
+        add(new Ball(Const.SCREEN_WIDTH / 2, Const.SCREEN_WIDTH / 2, this, difficulty.getDifficulty(), points));
+        add(new RemotablePlate(keyEventHandler, 970,280, this));
         add(new ComputerPlate(280, this));
 
     }
@@ -37,10 +40,10 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         getBall().update(deltaInSec);
         getRemotablePlate().update(deltaInSec);
         getComputerPlate().update(deltaInSec);
-        if (getPoint().playerWon) {
+        if (points.isPlayerWon()) {
             navigator.goTo(SceneType.GAMEOVER);
             stop();
-        } else if(getPoint().gegnerWon) {
+        } else if(points.isGegnerWon()) {
             navigator.goTo(SceneType.GAMEOVER);
             stop();
         }
@@ -55,13 +58,14 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         gc.fillRect(0,50,1000,11);
 
         gc.setFont(new Font(40));
-        gc.fillText("" + point.gegnerPoints, 440, 35);
-        gc.fillText("" + point.playerPoints, 530, 35);
+        gc.fillText("" + points.getGegnerPoints(), 440, 35);
+        gc.fillText("" + points.getPlayerPoints(), 530, 35);
 
         for (Gameobject object : this) {
             object.draw(gc);
         }
     }
+
     public Ball getBall() {
         return Util.getAllObjectsFromType(Ball.class, this).get(0);
     }
@@ -70,9 +74,6 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
     }
     public ComputerPlate getComputerPlate() {
         return Util.getAllObjectsFromType(ComputerPlate.class, this).get(0);
-    }
-    public Points getPoint() {
-        return point;
     }
 
     private void stop() {

@@ -8,6 +8,7 @@ public class ComputerPlate extends Gameobject{
     public ComputerPlate (double y, Board board){
         super(28, y, Images.plate);
         this.board = board;
+
     }
 
     @Override

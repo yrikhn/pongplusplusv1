@@ -4,39 +4,41 @@ pongplusplus/common/Initializable.java
  pongplusplus.common.Initializable
 pongplusplus/game/gameobjects/Gameobject.java
  pongplusplus.game.gameobjects.Gameobject
-pongplusplus/game/Const.java
- pongplusplus.game.Const
+pongplusplus/gui/GameOverScene.java
+ pongplusplus.gui.GameOverScene
 pongplusplus/game/KeyEventHandler.java
  pongplusplus.game.KeyEventHandler
  pongplusplus.game.KeyEventHandler$1
 pongplusplus/common/GodLikeAnimationTimer.java
  pongplusplus.common.GodLikeAnimationTimer
-pongplusplus/game/gameobjects/RemotablePlate.java
- pongplusplus.game.gameobjects.RemotablePlate
+pongplusplus/game/Points.java
+ pongplusplus.game.Points
 pongplusplus/common/BaseScene.java
  pongplusplus.common.BaseScene
-pongplusplus/game/Difficulty.java
- pongplusplus.game.Difficulty
+pongplusplus/game/Const.java
+ pongplusplus.game.Const
 pongplusplus/common/SceneType.java
  pongplusplus.common.SceneType
 pongplusplus/game/Images.java
  pongplusplus.game.Images
 pongplusplus/gui/WelcomeScene.java
  pongplusplus.gui.WelcomeScene
+pongplusplus/main/PongPlusPlusApp.java
+ pongplusplus.main.PongPlusPlusApp
+pongplusplus/game/Difficulty.java
+ pongplusplus.game.Difficulty
+pongplusplus/common/Navigator.java
+ pongplusplus.common.Navigator
 pongplusplus/game/gameobjects/Ball.java
  pongplusplus.game.gameobjects.Ball
 pongplusplus/game/gameobjects/Board.java
  pongplusplus.game.gameobjects.Board
 pongplusplus/game/gameobjects/ComputerPlate.java
  pongplusplus.game.gameobjects.ComputerPlate
+pongplusplus/game/gameobjects/RemotablePlate.java
+ pongplusplus.game.gameobjects.RemotablePlate
+pongplusplus/game/AbilityOne.java
+ pongplusplus.game.AbilityOne
 pongplusplus/gui/InGameScene.java
  pongplusplus.gui.InGameScene
  pongplusplus.gui.InGameScene$1
-pongplusplus/game/Points.java
- pongplusplus.game.Points
-pongplusplus/main/PongPlusPlusApp.java
- pongplusplus.main.PongPlusPlusApp
-pongplusplus/gui/GameOverScene.java
- pongplusplus.gui.GameOverScene
-pongplusplus/common/Navigator.java
- pongplusplus.common.Navigator
