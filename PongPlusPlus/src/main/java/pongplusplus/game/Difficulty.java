@@ -1,7 +1,6 @@
 package pongplusplus.game;
 
 import pongplusplus.common.Navigator;
-import pongplusplus.common.SceneType;
 
 public class Difficulty {
     private double difficulty;

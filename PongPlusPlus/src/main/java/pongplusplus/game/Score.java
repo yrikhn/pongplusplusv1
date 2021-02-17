@@ -15,11 +15,11 @@ public class Score {
     }
 
     public void checkWon() {
-        if (playerScore == 10) {
+        if (playerScore == 2) {
             playerWon = true;
         }
 
-        if (enemyScore == 10) {
+        if (enemyScore == 2) {
             enemyWon = true;
         }
     }

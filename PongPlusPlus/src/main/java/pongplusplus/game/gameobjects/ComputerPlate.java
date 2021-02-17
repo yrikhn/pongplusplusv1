@@ -21,8 +21,10 @@ public class ComputerPlate extends Gameobject{
 
     @Override
     public void update(double deltaInSec) {
-        randomNumb = random.nextInt(50);
-         if (board.getBall().getPos_x() <= Const.SCREEN_WIDTH/3*2){
+
+        randomNumb = random.nextInt(500);
+
+         if (board.getBall().getPos_x() <= Const.SCREEN_WIDTH/4*3){
 
             if(board.getBall().getPos_y() == pos_y)   {
 
@@ -36,16 +38,16 @@ public class ComputerPlate extends Gameobject{
                 }
             }
          }
-         if(randomNumb == 0 && abilityOne.getCooldown() <= 0){
+         if(randomNumb == 1 && abilityOne.getCooldown() <= 0 && !abilityOne.isActive()){
              if (board.getRemotablePlate().getAbilityOne().isActive()){
                  board.getRemotablePlate().getAbilityOne().deactivate();
                  abilityOne.setCooldown(25);
              }else{
                  abilityOne.activate();
                  abilityOne.setCooldown(25);
+                 board.getBall().setImage(Images.whileAbilityBall);
              }
          }
-        System.out.println("KI "+abilityOne.isActive());
         abilityOne.update(deltaInSec);
     }
 

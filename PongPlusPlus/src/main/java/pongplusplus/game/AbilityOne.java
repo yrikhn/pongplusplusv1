@@ -17,33 +17,32 @@ public class AbilityOne {
 
 
     public void update(double deltaInSec) {
-        startTime -= deltaInSec;
+
 
         if (cooldown >= 0){
             cooldown -= deltaInSec;
         }
         if (active) {
+            startTime -= deltaInSec;
             if (startTime > 0) {
                 if (pos_x == 970) {
                     if (ball.getPos_x() > Const.SCREEN_WIDTH / 2 + 14) {
                         ball.setSPEED(2);
                     } else if (ball.getPos_x() < Const.SCREEN_WIDTH / 2 + 14) {
-                        ball.setSPEED(5);
+                        ball.setSPEED(6);
                     }
                 } else {
                     if (ball.getPos_x() < Const.SCREEN_WIDTH / 2 + 14) {
                         ball.setSPEED(2);
                     } else if (ball.getPos_x() > Const.SCREEN_WIDTH / 2 + 14) {
-                        ball.setSPEED(5);
+                        ball.setSPEED(6);
                     }
                 }
             }
         }
 
-        if (startTime <= 0) {
-            ball.resetSpeed();
-            active = false;
-            startTime = 10;
+        if (startTime <= 0  ) {
+            deactivate();
         }
 
     }
@@ -53,6 +52,9 @@ public class AbilityOne {
 
     public void deactivate(){
         active = false;
+        startTime = 10;
+        ball.resetSpeed();
+        ball.setImage(Images.ball);
     }
 
     public double getCooldown() {

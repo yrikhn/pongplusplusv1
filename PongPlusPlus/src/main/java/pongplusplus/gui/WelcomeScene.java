@@ -5,13 +5,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 import pongplusplus.common.BaseScene;
 import pongplusplus.common.Initializable;
 import pongplusplus.common.Navigator;
-import pongplusplus.game.Const;
 import pongplusplus.game.Difficulty;
 import pongplusplus.game.Images;
+import pongplusplus.game.Sound;
+import pongplusplus.game.SoundFXType;
 
 public class WelcomeScene extends BaseScene implements Initializable{
     private static Scene welcomeScene;
@@ -25,21 +25,21 @@ public class WelcomeScene extends BaseScene implements Initializable{
     @Override
     public void onInitialize() {
         ImageView backgroundImage = new ImageView();
-        Image image = new Image("/welcomescene.png");
+        Image image = new Image(Images.WELCOME_SCENE);
         backgroundImage.setImage(image);
 
         Button easy = new Button("EASY");
-        easy.setOnAction(e -> difficulty.setDifficulty(3, navigator));
+        easy.setOnAction(e -> { difficulty.setDifficulty(3, navigator);Sound.play(SoundFXType.ONCLICK); });
         easy.setLayoutX(201);
         easy.setLayoutY(425);
 
         Button medium = new Button("MEDIUM");
-        medium.setOnAction(e -> difficulty.setDifficulty(4.5, navigator));
+        medium.setOnAction(e -> {difficulty.setDifficulty(4.5, navigator);Sound.play(SoundFXType.ONCLICK); });
         medium.setLayoutX(433);
         medium.setLayoutY(425);
 
         Button hard = new Button("HARD");
-        hard.setOnAction(e -> difficulty.setDifficulty(6, navigator));
+        hard.setOnAction(e -> {difficulty.setDifficulty(6, navigator);Sound.play(SoundFXType.ONCLICK); });
         hard.setLayoutX(665);
         hard.setLayoutY(425);
 

@@ -27,16 +27,16 @@ public class RemotablePlate extends Gameobject {
         } else if (keyEventHandler.isDownKeyPressed() && pos_y < 541) {
             pos_y += deltaInSec * SPEED;
         }
-        if (keyEventHandler.isQKeyPressed() && abilityOne.getCooldown() <= 0) {
+        if (keyEventHandler.isQKeyPressed() && abilityOne.getCooldown() <= 0 && !abilityOne.isActive()) {
             if (board.getComputerPlate().getAbilityOne().isActive()){
                 board.getComputerPlate().getAbilityOne().deactivate();
                 abilityOne.setCooldown(25);
             }else{
                 abilityOne.activate();
                 abilityOne.setCooldown(25);
+                board.getBall().setImage(Images.whileAbilityBall);
             }
         }
-        System.out.println("ME "+abilityOne.isActive());
         abilityOne.update(deltaInSec);
     }
 

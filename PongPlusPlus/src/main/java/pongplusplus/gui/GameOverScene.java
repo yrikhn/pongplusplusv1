@@ -9,11 +9,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import pongplusplus.common.BaseScene;
 import pongplusplus.common.Initializable;
-import pongplusplus.common.SceneType;
-import pongplusplus.game.Const;
-import pongplusplus.game.Images;
+import pongplusplus.game.*;
 import pongplusplus.common.Navigator;
-import pongplusplus.game.Score;
 
 
 public class GameOverScene extends BaseScene implements Initializable {
@@ -23,7 +20,7 @@ public class GameOverScene extends BaseScene implements Initializable {
     private Score score;
 
     public GameOverScene(Navigator navigator, Score score) {
-        super(navigator, Images.GAMEOVER_SCENE);
+        super(navigator);
         this.score = score;
     }
 
@@ -31,7 +28,7 @@ public class GameOverScene extends BaseScene implements Initializable {
     public void onInitialize() {
 
         ImageView backgroundImage = new ImageView();
-        Image image = new Image("/gameoverscene.png");
+        Image image = new Image(Images.GAMEOVER_SCENE);
         backgroundImage.setImage(image);
 
         announceWinner(announcement, score);
@@ -56,8 +53,8 @@ public class GameOverScene extends BaseScene implements Initializable {
         gameOverScene = new Scene(root);
 
         root.getChildren().addAll(backgroundImage, announcement, restart, exit);
-        restart.setOnAction(e -> navigator.goTo(SceneType.WELCOME));
-        exit.setOnAction(e -> Platform.exit());
+        restart.setOnAction(e -> {navigator.goTo(SceneType.WELCOME); Sound.play(SoundFXType.ONCLICK); });
+        exit.setOnAction(e -> {Sound.play(SoundFXType.ONCLICK);Platform.exit(); });
     }
 
 

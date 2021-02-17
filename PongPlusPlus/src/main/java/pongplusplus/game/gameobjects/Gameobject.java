@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 
 public abstract class Gameobject {
 
-    private Image image;
+    protected Image image;
     protected double pos_x;
     protected double pos_y;
 
@@ -27,5 +27,9 @@ public abstract class Gameobject {
 
     public double getPos_y() {
         return pos_y;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }

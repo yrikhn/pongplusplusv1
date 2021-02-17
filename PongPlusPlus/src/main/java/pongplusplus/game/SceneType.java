@@ -1,4 +1,4 @@
-package pongplusplus.common;
+package pongplusplus.game;
 
 public enum SceneType {
     WELCOME,

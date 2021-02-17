@@ -21,12 +21,4 @@ public abstract class BaseScene extends Scene {
         ((Group)getRoot()).getChildren().add(canvas);
     }
 
-    public BaseScene(Navigator navigator, Image backgroundImage) {
-        this(navigator);
-        drawBackgroundImage(backgroundImage);
-    }
-
-    protected void drawBackgroundImage(Image backgroundImage){
-        gc.drawImage(backgroundImage, 0, 0);
-    }
 }

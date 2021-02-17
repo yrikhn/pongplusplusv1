@@ -1,8 +1,6 @@
 package pongplusplus.game.gameobjects;
 
-import pongplusplus.game.Const;
-import pongplusplus.game.Images;
-import pongplusplus.game.Score;
+import pongplusplus.game.*;
 
 
 public class Ball extends Gameobject {
@@ -12,6 +10,7 @@ public class Ball extends Gameobject {
     private double balldiry;
     private Score score;
     private double originalSpeed;
+
 
 
     public Ball(double x, double y, Board board, double speed, Score score) {
@@ -66,18 +65,21 @@ public class Ball extends Gameobject {
     private void borderCollisionCheck() {
         if (pos_y + 14 >= Const.SCREEN_HEIGHT) {
             balldiry = -SPEED;
+            Sound.play(SoundFXType.ONHIT);
         }
 
         if (pos_y <= 52) {
             balldiry = SPEED;
+            Sound.play(SoundFXType.ONHIT);
         }
     }
 
     private void plateCollisionCheck() {
-        if (pos_x < board.getRemotablePlate().pos_x + 5 && pos_x > board.getRemotablePlate().pos_x - 20 && pos_y < board.getRemotablePlate().pos_y + 57 && pos_y > board.getRemotablePlate().pos_y) {
+        if(pos_x < board.getRemotablePlate().pos_x && pos_x > board.getRemotablePlate().pos_x - 20 && pos_y -14 < board.getRemotablePlate().pos_y + 57 && pos_y > board.getRemotablePlate().pos_y){
             balldirx = -SPEED;
-        } else if (pos_x < board.getComputerPlate().pos_x && pos_x > board.getComputerPlate().pos_x - 10 && pos_y < board.getComputerPlate().pos_y + 57 && pos_y > board.getComputerPlate().pos_y) {
+        } else if (pos_x < board.getComputerPlate().pos_x && pos_x > board.getComputerPlate().pos_x - 20 && pos_y - 14 < board.getComputerPlate().pos_y + 57 && pos_y > board.getComputerPlate().pos_y) {
             balldirx = SPEED;
+            Sound.play(SoundFXType.ONHIT);
         }
     }
 
@@ -94,4 +96,6 @@ public class Ball extends Gameobject {
             balldiry = SPEED;
         }
     }
+
+
 }

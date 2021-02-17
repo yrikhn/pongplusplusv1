@@ -3,7 +3,7 @@ package pongplusplus.main;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import pongplusplus.common.Navigator;
-import pongplusplus.common.SceneType;
+import pongplusplus.game.SceneType;
 import pongplusplus.game.Const;
 import pongplusplus.game.Difficulty;
 import pongplusplus.game.Score;
