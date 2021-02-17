@@ -1,6 +1,7 @@
 package pongplusplus.game.gameobjects;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import pongplusplus.common.Navigator;
@@ -10,6 +11,7 @@ import pongplusplus.game.Const;
 import pongplusplus.game.Difficulty;
 import pongplusplus.game.KeyEventHandler;
 import pongplusplus.game.Score;
+import pongplusplus.game.AbilityOne;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -19,6 +21,7 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
     private Runnable gameLoopStopper;
     private Score score;
     private Difficulty difficulty;
+    final ProgressIndicator progressIndicator = new ProgressIndicator(0);
 
 
     public Board(KeyEventHandler keyEventHandler, Navigator navigator, Runnable gameLoopStopper, Score score, Difficulty difficulty) {
@@ -33,7 +36,6 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         add(new Ball(Const.SCREEN_WIDTH / 2, Const.SCREEN_WIDTH / 2, this, difficulty.getDifficulty(), score));
         add(new RemotablePlate(keyEventHandler, 970, 280, this));
         add(new ComputerPlate(280, this));
-
     }
 
     public void update(double deltaInSec) {
@@ -58,6 +60,11 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         gc.fillRect(0, 50, 1000, 11);
 
         gc.setFont(new Font(40));
+
+        gc.fillText(Math.round(getRemotablePlate().getAbilityOne().getCooldown()) + " " + "secs", 25, 35);
+
+        gc.fillText(Math.round(getComputerPlate().getAbilityOne().getCooldown()) + " " + "secs", 870, 35);
+
         gc.fillText("" + score.getEnemyScore(), 440, 35);
         gc.fillText("" + score.getPlayerScore(), 530, 35);
 

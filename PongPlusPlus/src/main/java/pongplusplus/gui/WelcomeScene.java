@@ -20,8 +20,7 @@ public class WelcomeScene extends BaseScene implements Initializable{
     public WelcomeScene(Navigator navigator, Difficulty difficulty) {
         super(navigator);
         this.difficulty = difficulty;
-
-        }
+    }
 
     @Override
     public void onInitialize() {

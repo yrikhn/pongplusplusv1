@@ -23,7 +23,6 @@ test {
 javafx {
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.graphics']
 }
-javafx {
-    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.graphics']
-}
+
+
 mainClassName = 'pongplusplus.main.PongPlusPlusApp'

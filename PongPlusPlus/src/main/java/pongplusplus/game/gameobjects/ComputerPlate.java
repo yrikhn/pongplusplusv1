@@ -39,10 +39,10 @@ public class ComputerPlate extends Gameobject{
          if(randomNumb == 0 && abilityOne.getCooldown() <= 0){
              if (board.getRemotablePlate().getAbilityOne().isActive()){
                  board.getRemotablePlate().getAbilityOne().deactivate();
-                 abilityOne.setCooldown(20);
+                 abilityOne.setCooldown(25);
              }else{
                  abilityOne.activate();
-                 abilityOne.setCooldown(20);
+                 abilityOne.setCooldown(25);
              }
          }
         System.out.println("KI "+abilityOne.isActive());

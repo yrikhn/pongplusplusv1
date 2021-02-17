@@ -30,10 +30,10 @@ public class RemotablePlate extends Gameobject {
         if (keyEventHandler.isQKeyPressed() && abilityOne.getCooldown() <= 0) {
             if (board.getComputerPlate().getAbilityOne().isActive()){
                 board.getComputerPlate().getAbilityOne().deactivate();
-                abilityOne.setCooldown(20);
+                abilityOne.setCooldown(25);
             }else{
                 abilityOne.activate();
-                abilityOne.setCooldown(20);
+                abilityOne.setCooldown(25);
             }
         }
         System.out.println("ME "+abilityOne.isActive());
