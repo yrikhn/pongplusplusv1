@@ -11,9 +11,6 @@ public class Difficulty {
         navigator.goTo(SceneType.INGAME);
     }
 
-    public void setDifficulty(double speed) {
-        this.difficulty = speed;
-    }
 
     public double getDifficulty() {
         return this.difficulty;

@@ -11,13 +11,13 @@ public class RemotablePlate extends Gameobject {
     private KeyEventHandler keyEventHandler;
     private double SPEED = 250;
     private AbilityOne abilityOne;
-    private Ball ball;
+    private Board board;
 
     public RemotablePlate(KeyEventHandler keyEventHandler, double x, double y, Board board) {
         super(x, y, Images.plate);
         this.keyEventHandler = keyEventHandler;
-        this.ball = board.getBall();
-        abilityOne = new AbilityOne(ball, pos_x);
+        this.board = board;
+        abilityOne = new AbilityOne(board.getBall(), pos_x);
     }
 
     @Override
@@ -28,12 +28,19 @@ public class RemotablePlate extends Gameobject {
             pos_y += deltaInSec * SPEED;
         }
         if (keyEventHandler.isQKeyPressed() && abilityOne.getCooldown() <= 0) {
-            abilityOne.activate();
-            abilityOne.setCooldown(20);
+            if (board.getComputerPlate().getAbilityOne().isActive()){
+                board.getComputerPlate().getAbilityOne().deactivate();
+                abilityOne.setCooldown(20);
+            }else{
+                abilityOne.activate();
+                abilityOne.setCooldown(20);
+            }
         }
-        System.out.println(abilityOne.getCooldown());
-
-
+        System.out.println("ME "+abilityOne.isActive());
         abilityOne.update(deltaInSec);
+    }
+
+    public AbilityOne getAbilityOne() {
+        return abilityOne;
     }
 }

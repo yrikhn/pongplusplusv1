@@ -24,8 +24,6 @@ public class AbilityOne {
         }
         if (active) {
             if (startTime > 0) {
-
-                System.out.println("test");
                 if (pos_x == 970) {
                     if (ball.getPos_x() > Const.SCREEN_WIDTH / 2 + 14) {
                         ball.setSPEED(2);
@@ -53,11 +51,19 @@ public class AbilityOne {
         active = true;
     }
 
+    public void deactivate(){
+        active = false;
+    }
+
     public double getCooldown() {
         return cooldown;
     }
 
     public void setCooldown(double cooldown) {
         this.cooldown = cooldown;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 }

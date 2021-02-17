@@ -4,6 +4,8 @@ pongplusplus/common/Initializable.java
  pongplusplus.common.Initializable
 pongplusplus/game/gameobjects/Gameobject.java
  pongplusplus.game.gameobjects.Gameobject
+pongplusplus/game/Score.java
+ pongplusplus.game.Score
 pongplusplus/gui/GameOverScene.java
  pongplusplus.gui.GameOverScene
 pongplusplus/game/KeyEventHandler.java
@@ -11,8 +13,8 @@ pongplusplus/game/KeyEventHandler.java
  pongplusplus.game.KeyEventHandler$1
 pongplusplus/common/GodLikeAnimationTimer.java
  pongplusplus.common.GodLikeAnimationTimer
-pongplusplus/game/Points.java
- pongplusplus.game.Points
+pongplusplus/gui/Style.java
+ pongplusplus.gui.Style
 pongplusplus/common/BaseScene.java
  pongplusplus.common.BaseScene
 pongplusplus/game/Const.java
@@ -29,8 +31,8 @@ pongplusplus/game/Difficulty.java
  pongplusplus.game.Difficulty
 pongplusplus/common/Navigator.java
  pongplusplus.common.Navigator
-pongplusplus/gui/Style.java
- pongplusplus.gui.Style
+pongplusplus/game/AbilityOne.java
+ pongplusplus.game.AbilityOne
 pongplusplus/game/gameobjects/Ball.java
  pongplusplus.game.gameobjects.Ball
 pongplusplus/game/gameobjects/Board.java
@@ -39,8 +41,6 @@ pongplusplus/game/gameobjects/ComputerPlate.java
  pongplusplus.game.gameobjects.ComputerPlate
 pongplusplus/game/gameobjects/RemotablePlate.java
  pongplusplus.game.gameobjects.RemotablePlate
-pongplusplus/game/AbilityOne.java
- pongplusplus.game.AbilityOne
 pongplusplus/gui/InGameScene.java
  pongplusplus.gui.InGameScene
  pongplusplus.gui.InGameScene$1
