@@ -27,10 +27,10 @@ public class RemotablePlate extends Gameobject {
             pos_y += deltaInSec * SPEED;
         }
         if (keyEventHandler.isQKeyPressed() && abilityOne.getCooldown() <= 0 && !abilityOne.isActive()) {
-            if (board.getComputerPlate().getAbilityOne().isActive()){
+            if (board.getComputerPlate().getAbilityOne().isActive()) {
                 board.getComputerPlate().getAbilityOne().deactivate();
                 abilityOne.setCooldown(25);
-            }else{
+            } else {
                 abilityOne.activate();
                 abilityOne.setCooldown(25);
                 board.getBall().setImage(Images.whileAbilityBall);

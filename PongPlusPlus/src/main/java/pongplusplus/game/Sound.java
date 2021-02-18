@@ -2,6 +2,7 @@ package pongplusplus.game;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,15 +10,15 @@ import java.util.Map;
 public class Sound {
     private final static Map<String, Media> cache = new HashMap<>();
 
-    public static void play(SoundFXType soundEffect) {
+    public static void play(SoundEffectType soundEffect) {
         MediaPlayer player = createMediaPlayer(getSoundFileName(soundEffect));
         player.play();
     }
 
-    private static MediaPlayer createMediaPlayer(String filePath){
+    private static MediaPlayer createMediaPlayer(String filePath) {
         filePath = "/soundFX/" + filePath;
 
-        if (!cache.containsKey(filePath)){
+        if (!cache.containsKey(filePath)) {
             URL url = Sound.class.getResource(filePath);
             if (url == null) {
                 throw new RuntimeException("Could not load file: " + filePath);
@@ -29,7 +30,7 @@ public class Sound {
         return new MediaPlayer(cache.get(filePath));
     }
 
-    private static String getSoundFileName(SoundFXType soundEffect) {
+    private static String getSoundFileName(SoundEffectType soundEffect) {
         switch (soundEffect) {
             case ONHIT:
                 return "onhitsound.mp3";

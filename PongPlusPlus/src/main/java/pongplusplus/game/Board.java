@@ -37,9 +37,6 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
 
 
     public void update(double deltaInSec) {
-        for (Gameobject object : this) {
-            object.update(deltaInSec);
-        }
         if (score.isPlayerWon()) {
             navigator.goTo(SceneType.GAMEOVER);
             stop();
@@ -47,11 +44,17 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
             navigator.goTo(SceneType.GAMEOVER);
             stop();
         }
+
+        for (Gameobject object : this) {
+            object.update(deltaInSec);
+        }
+
     }
 
 
     public void draw(GraphicsContext gc) {
         gc.clearRect(0, 0, pongplusplus.game.Const.SCREEN_WIDTH, pongplusplus.game.Const.SCREEN_HEIGHT);
+
         gc.setFill(Paint.valueOf("#000000"));
         gc.fillRect(0, 0, 1000, 600);
         gc.setFill(Paint.valueOf("#FFFFFF"));
@@ -59,28 +62,29 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         gc.fillRect(0, 50, 1000, 11);
 
         gc.setFont(new Font(30));
-        gc.fillText("Q : ",35, 35);
-        gc.fillText("Q : ",870, 35);
+        gc.fillText("Q : ", 35, 35);
+        gc.fillText("Q : ", 870, 35);
         displayAbilityAvailability(gc);
 
         gc.fillText("" + score.getEnemyScore(), 440, 35);
-        gc.fillText("" + score.getPlayerScore(), 530, 35);
+        gc.fillText("" + score.getPlayerScore(), 540, 35);
 
         for (Gameobject object : this) {
             object.draw(gc);
         }
+
     }
 
 
-    private void displayAbilityAvailability(GraphicsContext gc){
+    private void displayAbilityAvailability(GraphicsContext gc) {
         if (Math.round(getComputerPlate().getAbilityOne().getCooldown()) > 0) {
             gc.fillText(Math.round(getComputerPlate().getAbilityOne().getCooldown()) + " S", 80, 35);
-        }else{
+        } else {
             gc.drawImage(Images.readyIcon, 80, 15);
         }
-        if (Math.round(getRemotablePlate().getAbilityOne().getCooldown()) > 0){
-            gc.fillText(Math.round(getRemotablePlate().getAbilityOne().getCooldown())  + " S", 915, 35);
-        }else {
+        if (Math.round(getRemotablePlate().getAbilityOne().getCooldown()) > 0) {
+            gc.fillText(Math.round(getRemotablePlate().getAbilityOne().getCooldown()) + " S", 915, 35);
+        } else {
             gc.drawImage(Images.readyIcon, 915, 15);
         }
     }

@@ -28,8 +28,7 @@ public class GameOverScene extends BaseScene implements Initializable {
     public void onInitialize() {
 
         ImageView backgroundImage = new ImageView();
-        Image image = new Image(Images.GAMEOVER_SCENE);
-        backgroundImage.setImage(image);
+        backgroundImage.setImage(Images.GAMEOVER_SCENE);
 
         announceWinner(announcement, score);
         announcement.setStyle(Const.TEXT_STYLE);
@@ -53,8 +52,14 @@ public class GameOverScene extends BaseScene implements Initializable {
         gameOverScene = new Scene(root);
 
         root.getChildren().addAll(backgroundImage, announcement, restart, exit);
-        restart.setOnAction(e -> {navigator.goTo(SceneType.WELCOME); Sound.play(SoundFXType.ONCLICK); });
-        exit.setOnAction(e -> {Sound.play(SoundFXType.ONCLICK);Platform.exit(); });
+        restart.setOnAction(e -> {
+            navigator.goTo(SceneType.WELCOME);
+            Sound.play(SoundEffectType.ONCLICK);
+        });
+        exit.setOnAction(e -> {
+            Sound.play(SoundEffectType.ONCLICK);
+            Platform.exit();
+        });
     }
 
 

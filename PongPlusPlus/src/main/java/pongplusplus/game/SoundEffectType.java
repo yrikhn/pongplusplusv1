@@ -1,6 +1,6 @@
 package pongplusplus.game;
 
-public enum SoundFXType {
+public enum SoundEffectType {
     ONHIT,
     ONCLICK
 }

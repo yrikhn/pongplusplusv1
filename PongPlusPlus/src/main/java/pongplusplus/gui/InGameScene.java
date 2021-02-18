@@ -18,6 +18,7 @@ public class InGameScene extends BaseScene implements Initializable {
         this.score = score;
         this.difficulty = difficulty;
     }
+
     @Override
     public void onInitialize() {
 
@@ -27,16 +28,16 @@ public class InGameScene extends BaseScene implements Initializable {
         this.setOnKeyPressed(keyEventHandler);
         this.setOnKeyReleased(keyEventHandler);
 
-        Board board = new Board(keyEventHandler, navigator,() -> gameLoop.stop(), score, difficulty);
+        Board board = new Board(keyEventHandler, navigator, () -> gameLoop.stop(), score, difficulty);
 
         board.generateObject();
 
         gameLoop = new GodLikeAnimationTimer() {
             @Override
             public void doHandle(double deltaInSec) {
-
-                board.update(deltaInSec);
                 board.draw(gc);
+                board.update(deltaInSec);
+
             }
         };
         gameLoop.start();

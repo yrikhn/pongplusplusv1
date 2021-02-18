@@ -18,7 +18,7 @@ public class AbilityOne {
 
     public void update(double deltaInSec) {
 
-        if (cooldown >= 0){
+        if (cooldown >= 0) {
             cooldown -= deltaInSec;
         }
         if (active) {
@@ -40,21 +40,23 @@ public class AbilityOne {
             }
         }
 
-        if (startTime <= 0  ) {
+        if (startTime <= 0) {
             deactivate();
         }
 
     }
+
     public void activate() {
         active = true;
     }
 
-    public void deactivate(){
+    public void deactivate() {
         active = false;
         startTime = 10;
         ball.resetSpeed();
         ball.setImage(Images.ball);
     }
+
     public boolean isActive() {
         return active;
     }

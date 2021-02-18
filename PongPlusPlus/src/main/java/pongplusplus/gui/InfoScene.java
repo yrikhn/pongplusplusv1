@@ -11,23 +11,20 @@ import pongplusplus.common.Navigator;
 import pongplusplus.game.Images;
 import pongplusplus.game.SceneType;
 import pongplusplus.game.Sound;
-import pongplusplus.game.SoundFXType;
+import pongplusplus.game.SoundEffectType;
 
 public class InfoScene extends BaseScene implements Initializable {
     private static Scene infoScene;
 
-    public InfoScene(Navigator navigator){
+    public InfoScene(Navigator navigator) {
         super(navigator);
 
     }
 
-
-
     @Override
     public void onInitialize() {
         ImageView backgroundImage = new ImageView();
-        Image image = new Image(Images.INFO_SCENE);
-        backgroundImage.setImage(image);
+        backgroundImage.setImage(Images.INFO_SCENE);
         Group root = new Group();
         infoScene = new Scene(root);
         Button returnButton = new Button("RETURN");
@@ -36,7 +33,10 @@ public class InfoScene extends BaseScene implements Initializable {
         Style.changeStyle(returnButton);
 
         root.getChildren().addAll(backgroundImage, returnButton);
-        returnButton.setOnAction(e -> {navigator.goTo(SceneType.WELCOME); Sound.play(SoundFXType.ONCLICK); });
+        returnButton.setOnAction(e -> {
+            navigator.goTo(SceneType.WELCOME);
+            Sound.play(SoundEffectType.ONCLICK);
+        });
     }
 
     public static Scene getScene() {

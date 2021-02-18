@@ -10,15 +10,16 @@ public abstract class Gameobject {
     protected double pos_y;
 
 
-    public Gameobject(double x, double y, Image image){
+    public Gameobject(double x, double y, Image image) {
         this.pos_x = x;
         this.pos_y = y;
         this.image = image;
     }
 
     public abstract void update(double deltaInSec);
-    public void draw(GraphicsContext gc){
-        gc.drawImage(image,pos_x,pos_y);
+
+    public void draw(GraphicsContext gc) {
+        gc.drawImage(image, pos_x, pos_y);
     }
 
     public double getPos_x() {

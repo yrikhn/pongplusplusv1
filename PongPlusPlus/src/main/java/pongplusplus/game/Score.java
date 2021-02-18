@@ -7,11 +7,11 @@ public class Score {
     private boolean enemyWon = false;
 
     public void addPlayerPoints() {
-        playerScore += 1;
+        playerScore++;
     }
 
     public void addGegnerPoints() {
-        enemyScore += 1;
+        enemyScore++;
     }
 
     public void checkWon() {

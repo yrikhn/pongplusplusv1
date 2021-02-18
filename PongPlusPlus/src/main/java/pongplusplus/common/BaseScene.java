@@ -17,7 +17,7 @@ public abstract class BaseScene extends Scene {
         this.navigator = navigator;
         canvas = new Canvas(Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
         gc = canvas.getGraphicsContext2D();
-        ((Group)getRoot()).getChildren().add(canvas);
+        ((Group) getRoot()).getChildren().add(canvas);
     }
 
 }
