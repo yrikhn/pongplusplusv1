@@ -1,10 +1,9 @@
 package pongplusplus.game.gameobjects;
 
 import pongplusplus.game.AbilityOne;
+import pongplusplus.game.Board;
 import pongplusplus.game.Images;
 import pongplusplus.game.KeyEventHandler;
-
-import java.sql.SQLOutput;
 
 public class RemotablePlate extends Gameobject {
 

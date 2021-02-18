@@ -1,12 +1,14 @@
-package pongplusplus.game.gameobjects;
+package pongplusplus.game;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import pongplusplus.common.Navigator;
-import pongplusplus.game.SceneType;
 import pongplusplus.common.Util;
-import pongplusplus.game.*;
+import pongplusplus.game.gameobjects.Ball;
+import pongplusplus.game.gameobjects.ComputerPlate;
+import pongplusplus.game.gameobjects.Gameobject;
+import pongplusplus.game.gameobjects.RemotablePlate;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -72,12 +74,12 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
 
     private void displayAbilityAvailability(GraphicsContext gc){
         if (Math.round(getComputerPlate().getAbilityOne().getCooldown()) > 0) {
-            gc.fillText(Math.round(getComputerPlate().getAbilityOne().getCooldown()) + " " + "S", 80, 35);
+            gc.fillText(Math.round(getComputerPlate().getAbilityOne().getCooldown()) + " S", 80, 35);
         }else{
             gc.drawImage(Images.readyIcon, 80, 15);
         }
         if (Math.round(getRemotablePlate().getAbilityOne().getCooldown()) > 0){
-            gc.fillText(Math.round(getRemotablePlate().getAbilityOne().getCooldown()) + " " + "S", 915, 35);
+            gc.fillText(Math.round(getRemotablePlate().getAbilityOne().getCooldown())  + " S", 915, 35);
         }else {
             gc.drawImage(Images.readyIcon, 915, 15);
         }

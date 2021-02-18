@@ -1,7 +1,7 @@
 package pongplusplus.game.gameobjects;
 
-import pongplusplus.game.*;
 
+import pongplusplus.game.*;
 
 public class Ball extends Gameobject {
     private double SPEED;
@@ -77,6 +77,7 @@ public class Ball extends Gameobject {
     private void plateCollisionCheck() {
         if(pos_x < board.getRemotablePlate().pos_x && pos_x > board.getRemotablePlate().pos_x - 20 && pos_y -14 < board.getRemotablePlate().pos_y + 57 && pos_y > board.getRemotablePlate().pos_y){
             balldirx = -SPEED;
+            Sound.play(SoundFXType.ONHIT);
         } else if (pos_x < board.getComputerPlate().pos_x && pos_x > board.getComputerPlate().pos_x - 20 && pos_y - 14 < board.getComputerPlate().pos_y + 57 && pos_y > board.getComputerPlate().pos_y) {
             balldirx = SPEED;
             Sound.play(SoundFXType.ONHIT);

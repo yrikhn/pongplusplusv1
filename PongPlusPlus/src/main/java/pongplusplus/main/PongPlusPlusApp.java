@@ -9,6 +9,7 @@ import pongplusplus.game.Difficulty;
 import pongplusplus.game.Score;
 import pongplusplus.gui.GameOverScene;
 import pongplusplus.gui.InGameScene;
+import pongplusplus.gui.InfoScene;
 import pongplusplus.gui.WelcomeScene;
 
 public class  PongPlusPlusApp extends Application {
@@ -23,6 +24,7 @@ public class  PongPlusPlusApp extends Application {
         navigator.registerScene(SceneType.WELCOME, new WelcomeScene(navigator, difficulty));
         navigator.registerScene(SceneType.INGAME, new InGameScene(navigator, score, difficulty));
         navigator.registerScene(SceneType.GAMEOVER, new GameOverScene(navigator, score));
+        navigator.registerScene(SceneType.INFO, new InfoScene(navigator));
         navigator.goTo(SceneType.WELCOME);
         stage.setMinHeight(Const.SCREEN_HEIGHT);
         stage.setMaxHeight(Const.SCREEN_HEIGHT);

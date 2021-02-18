@@ -4,7 +4,7 @@ package pongplusplus.game;
 import pongplusplus.game.gameobjects.Ball;
 
 public class AbilityOne {
-    private final double pos_x;
+    private double pos_x;
     private double cooldown = 0;
     private Ball ball;
     private double startTime = 10;
@@ -17,7 +17,6 @@ public class AbilityOne {
 
 
     public void update(double deltaInSec) {
-
 
         if (cooldown >= 0){
             cooldown -= deltaInSec;
@@ -56,6 +55,9 @@ public class AbilityOne {
         ball.resetSpeed();
         ball.setImage(Images.ball);
     }
+    public boolean isActive() {
+        return active;
+    }
 
     public double getCooldown() {
         return cooldown;
@@ -65,7 +67,5 @@ public class AbilityOne {
         this.cooldown = cooldown;
     }
 
-    public boolean isActive() {
-        return active;
-    }
+
 }

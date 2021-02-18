@@ -1,6 +1,7 @@
 package pongplusplus.game.gameobjects;
 
 import pongplusplus.game.AbilityOne;
+import pongplusplus.game.Board;
 import pongplusplus.game.Const;
 import pongplusplus.game.Images;
 
@@ -28,14 +29,10 @@ public class ComputerPlate extends Gameobject{
 
             if(board.getBall().getPos_y() == pos_y)   {
 
-            }else if (board.getBall().getPos_y() > pos_y){
-                if(pos_y < Const.SCREEN_HEIGHT - 200) {
+            }else if (board.getBall().getPos_y()-26 > pos_y && pos_y < 600){
                     pos_y += deltaInSec * 250;
-                }
-            }else if(board.getBall().getPos_y() < pos_y+57){
-                if(pos_y > 20) {
+            }else if(board.getBall().getPos_y()-26 < pos_y+57 && pos_y > 61){
                     pos_y -= deltaInSec * 250;
-                }
             }
          }
          if(randomNumb == 1 && abilityOne.getCooldown() <= 0 && !abilityOne.isActive()){

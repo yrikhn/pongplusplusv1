@@ -8,10 +8,7 @@ import javafx.scene.image.ImageView;
 import pongplusplus.common.BaseScene;
 import pongplusplus.common.Initializable;
 import pongplusplus.common.Navigator;
-import pongplusplus.game.Difficulty;
-import pongplusplus.game.Images;
-import pongplusplus.game.Sound;
-import pongplusplus.game.SoundFXType;
+import pongplusplus.game.*;
 
 public class WelcomeScene extends BaseScene implements Initializable{
     private static Scene welcomeScene;
@@ -43,13 +40,19 @@ public class WelcomeScene extends BaseScene implements Initializable{
         hard.setLayoutX(665);
         hard.setLayoutY(425);
 
+        Button info = new Button("INFO");
+        info.setOnAction(e -> { navigator.goTo(SceneType.INFO);Sound.play(SoundFXType.ONCLICK); });
+        info.setLayoutX(20);
+        info.setLayoutY(10);
+
         Style.changeStyle(easy);
         Style.changeStyle(medium);
         Style.changeStyle(hard);
+        Style.changeInfoStyle(info);
 
         Group root = new Group();
         welcomeScene = new Scene(root);
-        root.getChildren().addAll(backgroundImage, easy, medium, hard );
+        root.getChildren().addAll(backgroundImage, easy, medium, hard, info);
     }
 
     public static Scene getScene() {

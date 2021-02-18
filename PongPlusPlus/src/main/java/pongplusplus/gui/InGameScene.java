@@ -4,7 +4,7 @@ import pongplusplus.common.*;
 import pongplusplus.game.Difficulty;
 import pongplusplus.game.KeyEventHandler;
 import pongplusplus.game.Score;
-import pongplusplus.game.gameobjects.Board;
+import pongplusplus.game.Board;
 
 public class InGameScene extends BaseScene implements Initializable {
 

@@ -3,9 +3,8 @@ package pongplusplus.common;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pongplusplus.game.SceneType;
-import pongplusplus.game.Sound;
-import pongplusplus.game.SoundFXType;
 import pongplusplus.gui.GameOverScene;
+import pongplusplus.gui.InfoScene;
 import pongplusplus.gui.WelcomeScene;
 
 import java.util.HashMap;
@@ -34,6 +33,8 @@ public class Navigator {
             activeScene = GameOverScene.getScene();
         } else if (activeScene instanceof WelcomeScene) {
             activeScene = WelcomeScene.getScene();
+        } else if (activeScene instanceof InfoScene) {
+            activeScene = InfoScene.getScene();
         }
 
 
