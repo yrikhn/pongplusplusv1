@@ -22,6 +22,7 @@ public class KeyEventHandler implements EventHandler<KeyEvent> {
                 break;
             case Q:
                 isQKeyPressed = pressed;
+                break;
         }
     }
 
