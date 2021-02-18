@@ -19,6 +19,9 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
     private Score score;
     private Difficulty difficulty;
 
+    public Score getScore() {
+        return score;
+    }
 
     public Board(KeyEventHandler keyEventHandler, Navigator navigator, Runnable gameLoopStopper, Score score, Difficulty difficulty) {
         this.keyEventHandler = keyEventHandler;
@@ -62,8 +65,12 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         gc.fillRect(0, 50, 1000, 11);
 
         gc.setFont(new Font(30));
-        gc.fillText("Q : ", 35, 35);
-        gc.fillText("Q : ", 870, 35);
+        gc.fillText("LEFT : ", 15, 35);
+        gc.fillText("LEFT : ", 585, 35);
+
+        gc.fillText("RIGHT : ", 230, 35);
+        gc.fillText("RIGHT : ", 830, 35);
+
         displayAbilityAvailability(gc);
 
         gc.fillText("" + score.getEnemyScore(), 440, 35);
@@ -77,16 +84,30 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
 
 
     private void displayAbilityAvailability(GraphicsContext gc) {
-        if (Math.round(getComputerPlate().getAbilityOne().getCooldown()) > 0) {
-            gc.fillText(Math.round(getComputerPlate().getAbilityOne().getCooldown()) + " S", 80, 35);
+        //LEFT arrow key ability
+        if (Math.round(getComputerPlate().getBallSpeedAbility().getCooldown()) > 0) {
+            gc.fillText(Math.round(getComputerPlate().getBallSpeedAbility().getCooldown()) + " S", 90, 35);
         } else {
-            gc.drawImage(Images.readyIcon, 80, 15);
+            gc.drawImage(Images.readyIcon, 95, 15);
         }
-        if (Math.round(getRemotablePlate().getAbilityOne().getCooldown()) > 0) {
-            gc.fillText(Math.round(getRemotablePlate().getAbilityOne().getCooldown()) + " S", 915, 35);
+        if (Math.round(getRemotablePlate().getBallSpeedAbility().getCooldown()) > 0) {
+            gc.fillText(Math.round(getRemotablePlate().getBallSpeedAbility().getCooldown()) + " S", 665, 35);
         } else {
-            gc.drawImage(Images.readyIcon, 915, 15);
+            gc.drawImage(Images.readyIcon, 665, 15);
         }
+
+        //RIGHT arrow key ability
+        if (Math.round(getComputerPlate().getRemoveEnemyScoreAbility().getCooldown()) > 0) {
+            gc.fillText(Math.round(getComputerPlate().getRemoveEnemyScoreAbility().getCooldown()) + " S", 345, 35);
+        } else {
+            gc.drawImage(Images.readyIcon, 345, 15);
+        }
+        if (Math.round(getRemotablePlate().getRemoveEnemyScoreAbility().getCooldown()) > 0) {
+            gc.fillText(Math.round(getRemotablePlate().getRemoveEnemyScoreAbility().getCooldown()) + " S", 940, 35);
+        } else {
+            gc.drawImage(Images.readyIcon, 945, 15);
+        }
+
     }
 
 

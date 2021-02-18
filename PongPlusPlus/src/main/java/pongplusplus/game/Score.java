@@ -46,4 +46,14 @@ public class Score {
     public int getPlayerScore() {
         return playerScore;
     }
+
+    public void enemyPointStealer() {
+        enemyScore--;
+        playerScore++;
+    }
+
+    public void playerPointStealer() {
+        playerScore--;
+        enemyScore++;
+    }
 }

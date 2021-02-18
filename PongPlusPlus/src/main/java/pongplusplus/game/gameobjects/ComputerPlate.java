@@ -1,9 +1,6 @@
 package pongplusplus.game.gameobjects;
 
-import pongplusplus.game.AbilityOne;
-import pongplusplus.game.Board;
-import pongplusplus.game.Const;
-import pongplusplus.game.Images;
+import pongplusplus.game.*;
 
 import java.util.Random;
 
@@ -12,12 +9,14 @@ public class ComputerPlate extends Gameobject {
     private Board board;
     private double randomNumb;
     private Random random = new Random();
-    private AbilityOne abilityOne;
+    private BallSpeedAbility ballSpeedAbility;
+    private RemoveEnemyScoreAbility removeEnemyScoreAbility;
 
     public ComputerPlate(double y, Board board) {
         super(28, y, Images.plate);
         this.board = board;
-        abilityOne = new AbilityOne(board.getBall(), pos_x);
+        ballSpeedAbility = new BallSpeedAbility(board.getBall(), pos_x);
+        removeEnemyScoreAbility = new RemoveEnemyScoreAbility(board, this);
     }
 
     @Override
@@ -35,20 +34,32 @@ public class ComputerPlate extends Gameobject {
                 pos_y -= deltaInSec * 250;
             }
         }
-        if (randomNumb == 1 && abilityOne.getCooldown() <= 0 && !abilityOne.isActive()) {
-            if (board.getRemotablePlate().getAbilityOne().isActive()) {
-                board.getRemotablePlate().getAbilityOne().deactivate();
-                abilityOne.setCooldown(25);
+        if (randomNumb == 1 && ballSpeedAbility.getCooldown() <= 0) {
+            if (board.getRemotablePlate().getBallSpeedAbility().isActive()) {
+                board.getRemotablePlate().getBallSpeedAbility().deactivate();
+                ballSpeedAbility.setCooldown(25);
             } else {
-                abilityOne.activate();
-                abilityOne.setCooldown(25);
+                ballSpeedAbility.activate();
+                ballSpeedAbility.setCooldown(25);
                 board.getBall().setImage(Images.whileAbilityBall);
             }
         }
-        abilityOne.update(deltaInSec);
+
+        if (randomNumb == 265 && removeEnemyScoreAbility.getCooldown() <= 0) {
+            removeEnemyScoreAbility.activate();
+            removeEnemyScoreAbility.setCooldown(25);
+        }
+
+        ballSpeedAbility.update(deltaInSec);
+        removeEnemyScoreAbility.update(deltaInSec);
     }
 
-    public AbilityOne getAbilityOne() {
-        return abilityOne;
+    public BallSpeedAbility getBallSpeedAbility() {
+        return ballSpeedAbility;
     }
+
+    public RemoveEnemyScoreAbility getRemoveEnemyScoreAbility() {
+        return removeEnemyScoreAbility;
+    }
+
 }

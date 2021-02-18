@@ -7,7 +7,8 @@ public class KeyEventHandler implements EventHandler<KeyEvent> {
 
     private boolean isUpKeyPressed = false;
     private boolean isDownKeyPressed = false;
-    private boolean isQKeyPressed = false;
+    private boolean isLeftKeyPressed = false;
+    private boolean isRightKeyPressed = false;
 
     @Override
     public void handle(KeyEvent event) {
@@ -20,9 +21,11 @@ public class KeyEventHandler implements EventHandler<KeyEvent> {
             case UP:
                 isUpKeyPressed = pressed;
                 break;
-            case Q:
-                isQKeyPressed = pressed;
+            case LEFT:
+                isLeftKeyPressed = pressed;
                 break;
+            case RIGHT:
+                isRightKeyPressed = pressed;
         }
     }
 
@@ -34,7 +37,11 @@ public class KeyEventHandler implements EventHandler<KeyEvent> {
         return isDownKeyPressed;
     }
 
-    public boolean isQKeyPressed() {
-        return isQKeyPressed;
+    public boolean isLeftKeyPressed() {
+        return isLeftKeyPressed;
+    }
+
+    public boolean isRightKeyPressed() {
+        return isRightKeyPressed;
     }
 }
