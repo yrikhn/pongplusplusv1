@@ -53,7 +53,7 @@ public class DifficultySelectionScene extends BaseScene implements Initializable
             Sound.play(SoundEffectType.ONCLICK);
         });
         info.setLayoutX(20);
-        info.setLayoutY(10);
+        info.setLayoutY(20);
 
         Style.changeStyle(easy, 135, 75);
         Style.changeStyle(medium, 135, 75);

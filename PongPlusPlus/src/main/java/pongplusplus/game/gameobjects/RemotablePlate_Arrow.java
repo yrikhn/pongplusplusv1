@@ -6,14 +6,17 @@ public class RemotablePlate_Arrow extends Gameobject {
 
     private KeyEventHandler keyEventHandler;
     private double SPEED = 250;
-    private AbilityOne abilityOne;
+    private BallSpeedAbility ballSpeedAbility;
+    private RemoveEnemyScoreAbility removeEnemyScoreAbility;
     private Board board;
+
 
     public RemotablePlate_Arrow(KeyEventHandler keyEventHandler, double x, double y, Board board) {
         super(x, y, Images.plate);
         this.keyEventHandler = keyEventHandler;
         this.board = board;
-        abilityOne = new AbilityOne(board.getBall(), pos_x);
+        ballSpeedAbility = new BallSpeedAbility(board.getBall(), pos_x);
+        removeEnemyScoreAbility = new RemoveEnemyScoreAbility(board, this);
     }
 
 
@@ -26,37 +29,60 @@ public class RemotablePlate_Arrow extends Gameobject {
         }
 
         checkOponent();
-        abilityOne.update(deltaInSec);
+
+        ballSpeedAbility.update(deltaInSec);
+        removeEnemyScoreAbility.update(deltaInSec);
     }
 
     public void checkOponent() {
-        if (keyEventHandler.isLeftKeyPressed() && abilityOne.getCooldown() <= 0) {
+        if (keyEventHandler.isLeftKeyPressed() && ballSpeedAbility.getCooldown() <= 0) {
             if (board.getGameSetting().isSingleplayer()) {
-                if (board.getComputerPlate().getAbilityOne().isActive()) {
-                    board.getComputerPlate().getAbilityOne().deactivate();
-                    abilityOne.setCooldown(25);
+                if (board.getComputerPlate().getBallSpeedAbility().isActive()) {
+                    board.getComputerPlate().getBallSpeedAbility().deactivate();
+                    ballSpeedAbility.setCooldown(25);
                 } else {
-                    abilityOne.activate();
-                    abilityOne.setCooldown(25);
+                    ballSpeedAbility.activate();
+                    ballSpeedAbility.setCooldown(25);
                     board.getBall().setImage(Images.whileAbilityBall);
                 }
+
             } else {
 
-                if (board.getWASDRemotablePlate().getAbilityOne().isActive()) {
-                    board.getWASDRemotablePlate().getAbilityOne().deactivate();
-                    abilityOne.setCooldown(25);
+                if (board.getWASDRemotablePlate().getBallSpeedAbility().isActive()) {
+                    board.getWASDRemotablePlate().getBallSpeedAbility().deactivate();
+                    ballSpeedAbility.setCooldown(25);
                 } else {
-                    abilityOne.activate();
-                    abilityOne.setCooldown(25);
+                    ballSpeedAbility.activate();
+                    ballSpeedAbility.setCooldown(25);
                     board.getBall().setImage(Images.whileAbilityBall);
                 }
             }
+
         }
+        if (keyEventHandler.isRightKeyPressed() && removeEnemyScoreAbility.getCooldown() <= 0){
+            if (board.getGameSetting().isSingleplayer()) {
+                if (keyEventHandler.isRightKeyPressed() && removeEnemyScoreAbility.getCooldown() <= 0 && board.getScore().getEnemyScore() != 0){
+                    removeEnemyScoreAbility.activate();
+                    removeEnemyScoreAbility.setCooldown(25);
+                }
+            }else{
+                if (keyEventHandler.isRightKeyPressed() && removeEnemyScoreAbility.getCooldown() <= 0 && board.getScore().getEnemyScore() != 0){
+                    removeEnemyScoreAbility.activate();
+                    removeEnemyScoreAbility.setCooldown(25);
+                }
+            }
+
+        }
+
 
     }
 
 
-    public AbilityOne getAbilityOne() {
-        return abilityOne;
+    public BallSpeedAbility getBallSpeedAbility() {
+        return ballSpeedAbility;
+    }
+
+    public RemoveEnemyScoreAbility getRemoveEnemyScoreAbility() {
+        return removeEnemyScoreAbility;
     }
 }

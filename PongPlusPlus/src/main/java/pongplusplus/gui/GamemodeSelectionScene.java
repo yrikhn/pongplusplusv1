@@ -32,7 +32,7 @@ public class GamemodeSelectionScene extends BaseScene implements Initializable {
         multiplayerBtn.setLayoutY(425);
         Button info = new Button("INFO");
         info.setLayoutX(20);
-        info.setLayoutY(10);
+        info.setLayoutY(20);
         Style.changeStyle(singleplayerBtn, 200, 75);
         Style.changeStyle(multiplayerBtn,200, 75);
         Style.changeStyle(info, 95, 50);

@@ -26,9 +26,7 @@ public class ComputerPlate extends Gameobject {
 
         if (board.getBall().getPos_x() <= Const.SCREEN_WIDTH / 4 * 3) {
 
-            if (board.getBall().getPos_y() == pos_y) {
-
-            } else if (board.getBall().getPos_y() - 26 > pos_y && pos_y < 600) {
+            if (board.getBall().getPos_y() - 26 > pos_y && pos_y + Const.PLATE_HEIGHT < 600) {
                 pos_y += deltaInSec * 250;
             } else if (board.getBall().getPos_y() - 26 < pos_y + 57 && pos_y > 61) {
                 pos_y -= deltaInSec * 250;
@@ -45,7 +43,7 @@ public class ComputerPlate extends Gameobject {
             }
         }
 
-        if (randomNumb == 265 && removeEnemyScoreAbility.getCooldown() <= 0) {
+        if (randomNumb == 265 && removeEnemyScoreAbility.getCooldown() <= 0 && board.getScore().getPlayerScore() != 0) {
             removeEnemyScoreAbility.activate();
             removeEnemyScoreAbility.setCooldown(25);
         }

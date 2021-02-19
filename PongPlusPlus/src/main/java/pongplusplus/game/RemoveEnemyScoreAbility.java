@@ -1,9 +1,9 @@
 package pongplusplus.game;
 
 
-import pongplusplus.game.gameobjects.ComputerPlate;
+
 import pongplusplus.game.gameobjects.Gameobject;
-import pongplusplus.game.gameobjects.RemotablePlate;
+import pongplusplus.game.gameobjects.RemotablePlate_Arrow;
 
 public class RemoveEnemyScoreAbility {
     private Board board;
@@ -19,34 +19,24 @@ public class RemoveEnemyScoreAbility {
         this.player = player;
     }
 
-    public double getCooldown() {
-        return cooldown;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
 
     public void update(double deltaInSec) {
         if (cooldown >= 0) {
             cooldown -= deltaInSec;
         }
-
         if (active) {
-            if (player instanceof RemotablePlate) {
+            if (player instanceof RemotablePlate_Arrow) {
                 if (score.getEnemyScore() != 0) {
                     score.enemyPointStealer();
                     deactivate();
                 }
-            } else if (player instanceof ComputerPlate) {
+            } else {
                 if (score.getPlayerScore() != 0) {
                     score.playerPointStealer();
                     deactivate();
                 }
             }
         }
-
-
     }
 
     public void deactivate() {
@@ -59,5 +49,9 @@ public class RemoveEnemyScoreAbility {
 
     public void setCooldown(double cooldown) {
         this.cooldown = cooldown;
+    }
+
+    public double getCooldown() {
+        return cooldown;
     }
 }

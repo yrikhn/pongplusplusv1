@@ -47,6 +47,7 @@ public class Score {
         return playerScore;
     }
 
+
     public void enemyPointStealer() {
         enemyScore--;
         playerScore++;

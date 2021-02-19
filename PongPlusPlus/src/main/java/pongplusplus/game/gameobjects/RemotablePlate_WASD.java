@@ -6,14 +6,16 @@ public class RemotablePlate_WASD extends Gameobject {
 
     private KeyEventHandler keyEventHandler;
     private double SPEED = 250;
-    private AbilityOne abilityOne;
+    private BallSpeedAbility ballSpeedAbility;
+    private RemoveEnemyScoreAbility removeEnemyScoreAbility;
     private Board board;
 
     public RemotablePlate_WASD(KeyEventHandler keyEventHandler, double x, double y, Board board) {
         super(x, y, Images.plate);
         this.keyEventHandler = keyEventHandler;
         this.board = board;
-        abilityOne = new AbilityOne(board.getBall(), pos_x);
+        ballSpeedAbility = new BallSpeedAbility(board.getBall(), pos_x);
+        removeEnemyScoreAbility = new RemoveEnemyScoreAbility(board, this);
     }
 
 
@@ -24,20 +26,29 @@ public class RemotablePlate_WASD extends Gameobject {
         } else if (keyEventHandler.isSKeyPressed() && pos_y < 541) {
             pos_y += deltaInSec * SPEED;
         }
-        if (keyEventHandler.isAKeyPressed() && abilityOne.getCooldown() <= 0 && !abilityOne.isActive()) {
-            if (board.getArrowRemotablePlate().getAbilityOne().isActive()) {
-                board.getArrowRemotablePlate().getAbilityOne().deactivate();
-                abilityOne.setCooldown(25);
+        if (keyEventHandler.isAKeyPressed() && ballSpeedAbility.getCooldown() <= 0 && !ballSpeedAbility.isActive()) {
+            if (board.getArrowRemotablePlate().getBallSpeedAbility().isActive()) {
+                board.getArrowRemotablePlate().getBallSpeedAbility().deactivate();
+                ballSpeedAbility.setCooldown(25);
             } else {
-                abilityOne.activate();
-                abilityOne.setCooldown(25);
+                ballSpeedAbility.activate();
+                ballSpeedAbility.setCooldown(25);
                 board.getBall().setImage(Images.whileAbilityBall);
             }
         }
-        abilityOne.update(deltaInSec);
+        if (keyEventHandler.isDKeyPressed() && removeEnemyScoreAbility.getCooldown() <= 0 && board.getScore().getPlayerScore() != 0){
+            removeEnemyScoreAbility.activate();
+            removeEnemyScoreAbility.setCooldown(25);
+        }
+        ballSpeedAbility.update(deltaInSec);
+        removeEnemyScoreAbility.update(deltaInSec);
     }
 
-    public AbilityOne getAbilityOne() {
-        return abilityOne;
+    public BallSpeedAbility getBallSpeedAbility() {
+        return ballSpeedAbility;
+    }
+
+    public RemoveEnemyScoreAbility getRemoveEnemyScoreAbility() {
+        return removeEnemyScoreAbility;
     }
 }
