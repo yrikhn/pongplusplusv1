@@ -4,7 +4,21 @@ PongPlusPlus (Pong++) handelt sich um ein Player VS PC Pong spiel mit Fähigkeit
 
 
 ## GUI:
-![PongPlusPlus Design](pongplusplus%20design.png?raw=true)
+### Info:
+![PongPlusPlus Info Scene](GUI%20Screenshots/InfoScene.png?raw=true)
+
+### GamemodeSelection:
+![PongPlusPlus GamemodeSelection Scene](GUI%20Screenshots/gamemodeselection.png?raw=true)
+
+### DifficultySelection:
+![PongPlusPlus DifficultySelectionnfo Scene](GUI%20Screenshots/difficulty_selection.png?raw=true)
+
+### Ingame:
+![PongPlusPlus Ingame Scene](GUI%20Screenshots/Ingame.png?raw=true)
+
+### Gameover:
+![PongPlusPlus Gameover Scene](GUI%20Screenshots/gameover.png?raw=true)
+
 
 ## Authors
 
