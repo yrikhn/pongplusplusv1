@@ -34,9 +34,9 @@ public class ComputerPlate extends Gameobject {
                 pos_y -= deltaInSec * 250;
             }
         }
-        if (randomNumb == 1 && ballSpeedAbility.getCooldown() <= 0) {
-            if (board.getRemotablePlate().getBallSpeedAbility().isActive()) {
-                board.getRemotablePlate().getBallSpeedAbility().deactivate();
+        if (randomNumb == 1 && ballSpeedAbility.getCooldown() <= 0 && !ballSpeedAbility.isActive()) {
+            if (board.getArrowRemotablePlate().getBallSpeedAbility().isActive()) {
+                board.getArrowRemotablePlate().getBallSpeedAbility().deactivate();
                 ballSpeedAbility.setCooldown(25);
             } else {
                 ballSpeedAbility.activate();
@@ -61,5 +61,4 @@ public class ComputerPlate extends Gameobject {
     public RemoveEnemyScoreAbility getRemoveEnemyScoreAbility() {
         return removeEnemyScoreAbility;
     }
-
 }

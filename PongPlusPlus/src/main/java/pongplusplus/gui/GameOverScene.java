@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import pongplusplus.common.BaseScene;
@@ -45,15 +44,15 @@ public class GameOverScene extends BaseScene implements Initializable {
         exit.setLayoutX(568);
         exit.setLayoutY(425);
 
-        Style.changeStyle(restart);
-        Style.changeStyle(exit);
+        Style.changeStyle(restart, 135, 75);
+        Style.changeStyle(exit, 135, 75);
 
         Group root = new Group();
         gameOverScene = new Scene(root);
 
         root.getChildren().addAll(backgroundImage, announcement, restart, exit);
         restart.setOnAction(e -> {
-            navigator.goTo(SceneType.WELCOME);
+            navigator.goTo(SceneType.DIFFICULTY_SELECTION);
             Sound.play(SoundEffectType.ONCLICK);
         });
         exit.setOnAction(e -> {

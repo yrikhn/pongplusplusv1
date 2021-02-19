@@ -1,22 +1,19 @@
 package pongplusplus.gui;
 
 import pongplusplus.common.*;
-import pongplusplus.game.Difficulty;
-import pongplusplus.game.KeyEventHandler;
-import pongplusplus.game.Score;
-import pongplusplus.game.Board;
+import pongplusplus.game.*;
 
 public class InGameScene extends BaseScene implements Initializable {
 
     private GodLikeAnimationTimer gameLoop;
     private Score score;
-    private Difficulty difficulty;
+    private GameSetting gameSetting;
 
-    public InGameScene(Navigator navigator, Score score, Difficulty difficulty) {
+    public InGameScene(Navigator navigator, Score score, GameSetting gameSetting) {
         super(navigator);
 
         this.score = score;
-        this.difficulty = difficulty;
+        this.gameSetting = gameSetting;
     }
 
     @Override
@@ -25,10 +22,12 @@ public class InGameScene extends BaseScene implements Initializable {
         score.resetScore();
         KeyEventHandler keyEventHandler = new KeyEventHandler();
 
+
         this.setOnKeyPressed(keyEventHandler);
         this.setOnKeyReleased(keyEventHandler);
 
-        Board board = new Board(keyEventHandler, navigator, () -> gameLoop.stop(), score, difficulty);
+
+        Board board = new Board(keyEventHandler, navigator, () -> gameLoop.stop(), score, gameSetting);
 
         board.generateObject();
 

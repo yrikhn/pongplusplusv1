@@ -5,10 +5,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import pongplusplus.common.Navigator;
 import pongplusplus.common.Util;
-import pongplusplus.game.gameobjects.Ball;
-import pongplusplus.game.gameobjects.ComputerPlate;
-import pongplusplus.game.gameobjects.Gameobject;
-import pongplusplus.game.gameobjects.RemotablePlate;
+import pongplusplus.game.gameobjects.*;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -17,25 +14,30 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
     private Navigator navigator;
     private Runnable gameLoopStopper;
     private Score score;
-    private Difficulty difficulty;
+    private GameSetting gameSetting;
 
-    public Score getScore() {
-        return score;
-    }
 
-    public Board(KeyEventHandler keyEventHandler, Navigator navigator, Runnable gameLoopStopper, Score score, Difficulty difficulty) {
+    public Board(KeyEventHandler keyEventHandler, Navigator navigator, Runnable gameLoopStopper, Score score, GameSetting gameSetting) {
         this.keyEventHandler = keyEventHandler;
         this.gameLoopStopper = gameLoopStopper;
         this.navigator = navigator;
         this.score = score;
-        this.difficulty = difficulty;
+        this.gameSetting = gameSetting;
     }
 
 
     public void generateObject() {
-        add(new Ball(Const.SCREEN_WIDTH / 2, Const.SCREEN_WIDTH / 2, this, difficulty.getDifficulty(), score));
-        add(new RemotablePlate(keyEventHandler, 970, 280, this));
-        add(new ComputerPlate(280, this));
+        add(new Ball(Const.SCREEN_WIDTH / 2, Const.SCREEN_WIDTH / 2, this, gameSetting.getDifficulty(), score));
+        add(new RemotablePlate_Arrow(keyEventHandler, 970, 280, this));
+        decideGamemode();
+
+    }
+    public void decideGamemode(){
+        if (gameSetting.isSingleplayer()){
+            add(new ComputerPlate(280, this));
+        } else {
+            add(new RemotablePlate_WASD(keyEventHandler, 28, 280, this));
+        }
     }
 
 
@@ -84,30 +86,41 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
 
 
     private void displayAbilityAvailability(GraphicsContext gc) {
-        //LEFT arrow key ability
-        if (Math.round(getComputerPlate().getBallSpeedAbility().getCooldown()) > 0) {
-            gc.fillText(Math.round(getComputerPlate().getBallSpeedAbility().getCooldown()) + " S", 90, 35);
+        if (Math.round(getArrowRemotablePlate().getAbilityOne().getCooldown()) > 0) {
+            gc.fillText(Math.round(getArrowRemotablePlate().getAbilityOne().getCooldown()) + " S", 915, 35);
         } else {
-            gc.drawImage(Images.readyIcon, 95, 15);
+            gc.drawImage(Images.readyIcon, 915, 15);
         }
-        if (Math.round(getRemotablePlate().getBallSpeedAbility().getCooldown()) > 0) {
-            gc.fillText(Math.round(getRemotablePlate().getBallSpeedAbility().getCooldown()) + " S", 665, 35);
-        } else {
-            gc.drawImage(Images.readyIcon, 665, 15);
-        }
-
-        //RIGHT arrow key ability
-        if (Math.round(getComputerPlate().getRemoveEnemyScoreAbility().getCooldown()) > 0) {
-            gc.fillText(Math.round(getComputerPlate().getRemoveEnemyScoreAbility().getCooldown()) + " S", 345, 35);
-        } else {
-            gc.drawImage(Images.readyIcon, 345, 15);
-        }
-        if (Math.round(getRemotablePlate().getRemoveEnemyScoreAbility().getCooldown()) > 0) {
-            gc.fillText(Math.round(getRemotablePlate().getRemoveEnemyScoreAbility().getCooldown()) + " S", 940, 35);
+        if (Math.round(getArrowRemotablePlate().getRemoveEnemyScoreAbility().getCooldown()) > 0) {
+            gc.fillText(Math.round(getArrowRemotablePlate().getRemoveEnemyScoreAbility().getCooldown()) + " S", 940, 35);
         } else {
             gc.drawImage(Images.readyIcon, 945, 15);
         }
 
+        if (gameSetting.isSingleplayer()) {
+            if (Math.round(getComputerPlate().getAbilityOne().getCooldown()) > 0) {
+                gc.fillText(Math.round(getComputerPlate().getAbilityOne().getCooldown()) + " S", 80, 35);
+            } else {
+                gc.drawImage(Images.readyIcon, 80, 15);
+            }
+            if (Math.round(getComputerPlate().getRemoveEnemyScoreAbility().getCooldown()) > 0) {
+                gc.fillText(Math.round(getComputerPlate().getRemoveEnemyScoreAbility().getCooldown()) + " S", 345, 35);
+            } else {
+                gc.drawImage(Images.readyIcon, 345, 15);
+            }
+
+        } else {
+            if (Math.round(getWASDRemotablePlate().getAbilityOne().getCooldown()) > 0) {
+                gc.fillText(Math.round(getWASDRemotablePlate().getAbilityOne().getCooldown()) + " S", 80, 35);
+            } else {
+                gc.drawImage(Images.readyIcon, 80, 15);
+            }
+            if (Math.round(getWASDRemotablePlate().getRemoveEnemyScoreAbility().getCooldown()) > 0) {
+                gc.fillText(Math.round(getWASDRemotablePlate().getRemoveEnemyScoreAbility().getCooldown()) + " S", 940, 35);
+            } else {
+                gc.drawImage(Images.readyIcon, 345, 15);
+            }
+        }
     }
 
 
@@ -116,15 +129,20 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
     }
 
 
-    public RemotablePlate getRemotablePlate() {
-        return Util.getAllObjectsFromType(RemotablePlate.class, this).get(0);
+    public RemotablePlate_Arrow getArrowRemotablePlate() {
+        return Util.getAllObjectsFromType(RemotablePlate_Arrow.class, this).get(0);
     }
-
+    public RemotablePlate_WASD getWASDRemotablePlate() {
+        return Util.getAllObjectsFromType(RemotablePlate_WASD.class, this).get(0);
+    }
 
     public ComputerPlate getComputerPlate() {
         return Util.getAllObjectsFromType(ComputerPlate.class, this).get(0);
     }
 
+    public GameSetting getGameSetting() {
+        return gameSetting;
+    }
 
     private void stop() {
         gameLoopStopper.run();
