@@ -1,7 +1,7 @@
 package pongplusplus.game;
 
 public class Score {
-    private int enemyScore;
+    private int enemyScore = 9;
     private int playerScore;
     private boolean playerWon = false;
     private boolean enemyWon = false;
@@ -15,11 +15,11 @@ public class Score {
     }
 
     public void checkWon() {
-        if (playerScore == 10) {
+        if (playerScore == 2) {
             playerWon = true;
         }
 
-        if (enemyScore == 10) {
+        if (enemyScore == 2) {
             enemyWon = true;
         }
     }

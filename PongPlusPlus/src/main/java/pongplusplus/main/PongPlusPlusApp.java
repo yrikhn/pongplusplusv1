@@ -5,12 +5,9 @@ import javafx.stage.Stage;
 import pongplusplus.common.Navigator;
 import pongplusplus.game.SceneType;
 import pongplusplus.game.Const;
-import pongplusplus.game.Difficulty;
+import pongplusplus.game.GameSetting;
 import pongplusplus.game.Score;
-import pongplusplus.gui.GameOverScene;
-import pongplusplus.gui.InGameScene;
-import pongplusplus.gui.InfoScene;
-import pongplusplus.gui.WelcomeScene;
+import pongplusplus.gui.*;
 
 public class  PongPlusPlusApp extends Application {
     @Override
@@ -19,13 +16,14 @@ public class  PongPlusPlusApp extends Application {
 
         Navigator navigator = new Navigator(stage);
         Score score = new Score();
-        Difficulty difficulty = new Difficulty();
+        GameSetting gameSetting = new GameSetting();
 
-        navigator.registerScene(SceneType.WELCOME, new WelcomeScene(navigator, difficulty));
-        navigator.registerScene(SceneType.INGAME, new InGameScene(navigator, score, difficulty));
+        navigator.registerScene(SceneType.DIFFICULTY_SELECTION, new DifficultySelectionScene(navigator, gameSetting));
+        navigator.registerScene(SceneType.GAMEMODE_SELECTION, new GamemodeSelectionScene(navigator, gameSetting));
+        navigator.registerScene(SceneType.INGAME, new InGameScene(navigator, score, gameSetting));
         navigator.registerScene(SceneType.GAMEOVER, new GameOverScene(navigator, score));
-        navigator.registerScene(SceneType.INFO, new InfoScene(navigator));
-        navigator.goTo(SceneType.WELCOME);
+        navigator.registerScene(SceneType.INFO, new InfoScene(navigator, gameSetting));
+        navigator.goTo(SceneType.GAMEMODE_SELECTION);
         stage.setMinHeight(Const.SCREEN_HEIGHT);
         stage.setMaxHeight(Const.SCREEN_HEIGHT);
         stage.setMinWidth(Const.SCREEN_WIDTH);

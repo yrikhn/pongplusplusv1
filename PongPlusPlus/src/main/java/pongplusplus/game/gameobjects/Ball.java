@@ -74,12 +74,20 @@ public class Ball extends Gameobject {
     }
 
     private void plateCollisionCheck() {
-        if (pos_x < board.getRemotablePlate().pos_x && pos_x > board.getRemotablePlate().pos_x - 20 && pos_y - Const.BALL_HEIGHT_WIDTH < board.getRemotablePlate().pos_y + Const.PLATE_HEIGHT && pos_y > board.getRemotablePlate().pos_y) {
+        if (pos_x < board.getArrowRemotablePlate().pos_x && pos_x > board.getArrowRemotablePlate().pos_x - 20 && pos_y - Const.BALL_HEIGHT_WIDTH < board.getArrowRemotablePlate().pos_y + Const.PLATE_HEIGHT && pos_y > board.getArrowRemotablePlate().pos_y) {
             balldirx = -SPEED;
             Sound.play(SoundEffectType.ONHIT);
-        } else if (pos_x < board.getComputerPlate().pos_x && pos_x > board.getComputerPlate().pos_x - 10 && pos_y - Const.BALL_HEIGHT_WIDTH < board.getComputerPlate().pos_y + Const.PLATE_HEIGHT && pos_y > board.getComputerPlate().pos_y) {
-            balldirx = SPEED;
-            Sound.play(SoundEffectType.ONHIT);
+        }
+        if (board.getGameSetting().isSingleplayer()) {
+            if (pos_x < board.getComputerPlate().pos_x && pos_x > board.getComputerPlate().pos_x - 10 && pos_y - Const.BALL_HEIGHT_WIDTH < board.getComputerPlate().pos_y + Const.PLATE_HEIGHT && pos_y > board.getComputerPlate().pos_y) {
+                balldirx = SPEED;
+                Sound.play(SoundEffectType.ONHIT);
+            }
+        } else {
+            if (pos_x < board.getWASDRemotablePlate().pos_x && pos_x > board.getWASDRemotablePlate().pos_x - 10 && pos_y - Const.BALL_HEIGHT_WIDTH < board.getWASDRemotablePlate().pos_y + Const.PLATE_HEIGHT && pos_y > board.getWASDRemotablePlate().pos_y) {
+                balldirx = SPEED;
+                Sound.play(SoundEffectType.ONHIT);
+            }
         }
     }
 

@@ -1,8 +1,9 @@
 package pongplusplus.game;
 
 public enum SceneType {
-    WELCOME,
+    DIFFICULTY_SELECTION,
     INGAME,
     GAMEOVER,
-    INFO
+    INFO,
+    GAMEMODE_SELECTION
 }

@@ -3,22 +3,20 @@ package pongplusplus.gui;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import pongplusplus.common.BaseScene;
 import pongplusplus.common.Initializable;
 import pongplusplus.common.Navigator;
-import pongplusplus.game.Images;
-import pongplusplus.game.SceneType;
-import pongplusplus.game.Sound;
-import pongplusplus.game.SoundEffectType;
+import pongplusplus.game.*;
 
 public class InfoScene extends BaseScene implements Initializable {
     private static Scene infoScene;
+    private GameSetting gameSetting;
 
-    public InfoScene(Navigator navigator) {
+    public InfoScene(Navigator navigator, GameSetting gameSetting) {
         super(navigator);
 
+        this.gameSetting = gameSetting;
     }
 
     @Override
@@ -30,12 +28,17 @@ public class InfoScene extends BaseScene implements Initializable {
         Button returnButton = new Button("RETURN");
         returnButton.setLayoutX(433);
         returnButton.setLayoutY(475);
-        Style.changeStyle(returnButton);
+        Style.changeStyle(returnButton,135,75);
 
         root.getChildren().addAll(backgroundImage, returnButton);
         returnButton.setOnAction(e -> {
-            navigator.goTo(SceneType.WELCOME);
-            Sound.play(SoundEffectType.ONCLICK);
+            if (gameSetting.isGamemodeSelected()) {
+                navigator.goTo(SceneType.DIFFICULTY_SELECTION);
+                Sound.play(SoundEffectType.ONCLICK);
+            }else{
+                navigator.goTo(SceneType.GAMEMODE_SELECTION);
+                Sound.play(SoundEffectType.ONCLICK);
+            }
         });
     }
 

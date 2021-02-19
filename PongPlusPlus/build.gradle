@@ -26,3 +26,13 @@ javafx {
 
 
 mainClassName = 'pongplusplus.main.PongPlusPlusApp'
+
+jar {
+    manifest{
+        attributes 'Main-Class': 'pongplusplus.main.PongPlusPlusApp'
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

@@ -36,8 +36,8 @@ public class ComputerPlate extends Gameobject {
             }
         }
         if (randomNumb == 1 && abilityOne.getCooldown() <= 0 && !abilityOne.isActive()) {
-            if (board.getRemotablePlate().getAbilityOne().isActive()) {
-                board.getRemotablePlate().getAbilityOne().deactivate();
+            if (board.getArrowRemotablePlate().getAbilityOne().isActive()) {
+                board.getArrowRemotablePlate().getAbilityOne().deactivate();
                 abilityOne.setCooldown(25);
             } else {
                 abilityOne.activate();
