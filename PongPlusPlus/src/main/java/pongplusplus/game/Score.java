@@ -18,7 +18,6 @@ public class Score {
         if (playerScore == 2) {
             playerWon = true;
         }
-
         if (enemyScore == 2) {
             enemyWon = true;
         }
@@ -47,14 +46,17 @@ public class Score {
         return playerScore;
     }
 
-
-    public void enemyPointStealer() {
+    public void removeEnemyPoint() {
         enemyScore--;
+    }
+    public void addEnemyPoint() {
+        enemyScore++;
+    }
+    public void removePlayerPoint() {
+        playerScore--;
+    }
+    public void addPlayerPoint() {
         playerScore++;
     }
 
-    public void playerPointStealer() {
-        playerScore--;
-        enemyScore++;
-    }
 }

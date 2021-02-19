@@ -15,7 +15,6 @@ public class InfoScene extends BaseScene implements Initializable {
 
     public InfoScene(Navigator navigator, GameSetting gameSetting) {
         super(navigator);
-
         this.gameSetting = gameSetting;
     }
 
@@ -29,7 +28,6 @@ public class InfoScene extends BaseScene implements Initializable {
         returnButton.setLayoutX(433);
         returnButton.setLayoutY(475);
         Style.changeStyle(returnButton,135,75);
-
         root.getChildren().addAll(backgroundImage, returnButton);
         returnButton.setOnAction(e -> {
             if (gameSetting.isGamemodeSelected()) {

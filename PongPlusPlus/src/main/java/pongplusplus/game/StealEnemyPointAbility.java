@@ -1,11 +1,9 @@
 package pongplusplus.game;
 
-
-
 import pongplusplus.game.gameobjects.Gameobject;
 import pongplusplus.game.gameobjects.RemotablePlate_Arrow;
 
-public class RemoveEnemyScoreAbility {
+public class StealEnemyPointAbility {
     private Board board;
     private double cooldown = 0;
     private boolean active = false;
@@ -13,7 +11,7 @@ public class RemoveEnemyScoreAbility {
     private Gameobject player;
 
 
-    public RemoveEnemyScoreAbility(Board board, Gameobject player) {
+    public StealEnemyPointAbility(Board board, Gameobject player) {
         this.board = board;
         this.score = board.getScore();
         this.player = player;
@@ -27,12 +25,12 @@ public class RemoveEnemyScoreAbility {
         if (active) {
             if (player instanceof RemotablePlate_Arrow) {
                 if (score.getEnemyScore() != 0) {
-                    score.enemyPointStealer();
+                    enemyPointStealer();
                     deactivate();
                 }
             } else {
                 if (score.getPlayerScore() != 0) {
-                    score.playerPointStealer();
+                    playerPointStealer();
                     deactivate();
                 }
             }
@@ -53,5 +51,15 @@ public class RemoveEnemyScoreAbility {
 
     public double getCooldown() {
         return cooldown;
+    }
+
+    public void enemyPointStealer() {
+        score.removeEnemyPoint();
+        score.addPlayerPoint();
+    }
+
+    public void playerPointStealer() {
+        score.addEnemyPoint();
+        score.removePlayerPoint();
     }
 }

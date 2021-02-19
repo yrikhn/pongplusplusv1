@@ -32,8 +32,9 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         decideGamemode();
 
     }
-    public void decideGamemode(){
-        if (gameSetting.isSingleplayer()){
+
+    public void decideGamemode() {
+        if (gameSetting.isSingleplayer()) {
             add(new ComputerPlate(280, this));
         } else {
             add(new RemotablePlate_WASD(keyEventHandler, 28, 280, this));
@@ -109,11 +110,6 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
                 gc.drawImage(Images.readyIcon, 213, 15);
             }
 
-
-
-
-
-
         } else {
             if (Math.round(getWASDRemotablePlate().getBallSpeedAbility().getCooldown()) > 0) {
                 gc.fillText(Math.round(getWASDRemotablePlate().getBallSpeedAbility().getCooldown()) + " S", 80, 35);
@@ -137,6 +133,7 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
     public RemotablePlate_Arrow getArrowRemotablePlate() {
         return Util.getAllObjectsFromType(RemotablePlate_Arrow.class, this).get(0);
     }
+
     public RemotablePlate_WASD getWASDRemotablePlate() {
         return Util.getAllObjectsFromType(RemotablePlate_WASD.class, this).get(0);
     }
@@ -149,13 +146,14 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         return gameSetting;
     }
 
+    public Score getScore() {
+        return score;
+    }
 
     private void stop() {
         gameLoopStopper.run();
         clear();
     }
 
-    public Score getScore() {
-        return score;
-    }
+
 }

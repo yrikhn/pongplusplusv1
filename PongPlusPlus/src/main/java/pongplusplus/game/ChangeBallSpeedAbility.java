@@ -3,14 +3,14 @@ package pongplusplus.game;
 
 import pongplusplus.game.gameobjects.Ball;
 
-public class BallSpeedAbility {
+public class ChangeBallSpeedAbility {
     private double pos_x;
     private double cooldown = 0;
     private Ball ball;
     private double startTime = 10;
     private boolean active = false;
 
-    public BallSpeedAbility(Ball ball, double pos_x) {
+    public ChangeBallSpeedAbility(Ball ball, double pos_x) {
         this.ball = ball;
         this.pos_x = pos_x;
     }
@@ -25,15 +25,15 @@ public class BallSpeedAbility {
             startTime -= deltaInSec;
             if (startTime > 0) {
                 if (pos_x == 970) {
-                    if (ball.getPos_x() > Const.SCREEN_WIDTH / 2 + 14) {
+                    if (ball.getPos_x() > Const.SCREEN_WIDTH / 2) {
                         ball.setSPEED(2);
-                    } else if (ball.getPos_x() < Const.SCREEN_WIDTH / 2 + 14) {
+                    } else if (ball.getPos_x() < Const.SCREEN_WIDTH / 2) {
                         ball.setSPEED(6);
                     }
                 } else {
-                    if (ball.getPos_x() < Const.SCREEN_WIDTH / 2 + 14) {
+                    if (ball.getPos_x() < Const.SCREEN_WIDTH / 2) {
                         ball.setSPEED(2);
-                    } else if (ball.getPos_x() > Const.SCREEN_WIDTH / 2 + 14) {
+                    } else if (ball.getPos_x() > Const.SCREEN_WIDTH / 2) {
                         ball.setSPEED(6);
                     }
                 }

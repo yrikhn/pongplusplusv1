@@ -17,7 +17,6 @@ public class KeyEventHandler implements EventHandler<KeyEvent> {
     @Override
     public void handle(KeyEvent event) {
         boolean pressed = event.getEventType() == KeyEvent.KEY_PRESSED;
-
         switch (event.getCode()) {
             case DOWN:
                 isDownKeyPressed = pressed;
@@ -41,10 +40,8 @@ public class KeyEventHandler implements EventHandler<KeyEvent> {
                 break;
             case D:
                 isDKeyPressed = pressed;
-
         }
     }
-
     public boolean isUpKeyPressed() {
         return isUpKeyPressed;
     }

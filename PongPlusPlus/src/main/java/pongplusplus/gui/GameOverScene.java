@@ -25,31 +25,23 @@ public class GameOverScene extends BaseScene implements Initializable {
 
     @Override
     public void onInitialize() {
-
         ImageView backgroundImage = new ImageView();
         backgroundImage.setImage(Images.GAMEOVER_SCENE);
-
         announceWinner(announcement, score);
         announcement.setStyle(Const.TEXT_STYLE);
-
         announcement.setLayoutX(410);
         announcement.setLayoutY(355);
         score.resetScore();
-
         Button restart = new Button("RESTART");
         restart.setLayoutX(298);
         restart.setLayoutY(425);
-
         Button exit = new Button("EXIT");
         exit.setLayoutX(568);
         exit.setLayoutY(425);
-
         Style.changeStyle(restart, 135, 75);
         Style.changeStyle(exit, 135, 75);
-
         Group root = new Group();
         gameOverScene = new Scene(root);
-
         root.getChildren().addAll(backgroundImage, announcement, restart, exit);
         restart.setOnAction(e -> {
             navigator.goTo(SceneType.DIFFICULTY_SELECTION);
@@ -60,7 +52,6 @@ public class GameOverScene extends BaseScene implements Initializable {
             Platform.exit();
         });
     }
-
 
     public static void announceWinner(Text text, Score point) {
         if (point.isPlayerWon()) {

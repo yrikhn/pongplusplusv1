@@ -2,12 +2,12 @@ package pongplusplus.game.gameobjects;
 
 import pongplusplus.game.*;
 
-public class RemotablePlate_Arrow extends Gameobject {
+public class RemotablePlate_Arrow extends Gameobject implements PlateObject{
 
     private KeyEventHandler keyEventHandler;
     private double SPEED = 250;
-    private BallSpeedAbility ballSpeedAbility;
-    private RemoveEnemyScoreAbility removeEnemyScoreAbility;
+    private ChangeBallSpeedAbility changeBallSpeedAbility;
+    private StealEnemyPointAbility stealEnemyPointAbility;
     private Board board;
 
 
@@ -15,74 +15,86 @@ public class RemotablePlate_Arrow extends Gameobject {
         super(x, y, Images.plate);
         this.keyEventHandler = keyEventHandler;
         this.board = board;
-        ballSpeedAbility = new BallSpeedAbility(board.getBall(), pos_x);
-        removeEnemyScoreAbility = new RemoveEnemyScoreAbility(board, this);
+        changeBallSpeedAbility = new ChangeBallSpeedAbility(board.getBall(), pos_x);
+        stealEnemyPointAbility = new StealEnemyPointAbility(board, this);
     }
-
 
     @Override
     public void update(double deltaInSec) {
+        checkMovement(deltaInSec);
+        checkOponent();
+        changeBallSpeedAbility.update(deltaInSec);
+        stealEnemyPointAbility.update(deltaInSec);
+    }
+
+    public void checkOponent() {
+        if (keyEventHandler.isLeftKeyPressed() && changeBallSpeedAbility.getCooldown() <= 0) {
+            if (board.getGameSetting().isSingleplayer()) {
+                checkChangeBallSpeedAbilityActivation();
+            } else {
+                checkChangeBallSpeedAbilityActivationMultiplayer();
+            }
+        }
+        if (keyEventHandler.isRightKeyPressed() && stealEnemyPointAbility.getCooldown() <= 0){
+            if (board.getGameSetting().isSingleplayer()) {
+                checkStealEnemyPointsAbilityActivation();
+            }else{
+                checkStealEnemyPointsAbilityActivationMultiplayer();
+            }
+        }
+    }
+
+    @Override
+    public void checkMovement(double deltaInSec) {
         if (keyEventHandler.isUpKeyPressed() && pos_y > 61) {
             pos_y -= deltaInSec * SPEED;
         } else if (keyEventHandler.isDownKeyPressed() && pos_y < 541) {
             pos_y += deltaInSec * SPEED;
         }
-
-        checkOponent();
-
-        ballSpeedAbility.update(deltaInSec);
-        removeEnemyScoreAbility.update(deltaInSec);
     }
 
-    public void checkOponent() {
-        if (keyEventHandler.isLeftKeyPressed() && ballSpeedAbility.getCooldown() <= 0) {
-            if (board.getGameSetting().isSingleplayer()) {
-                if (board.getComputerPlate().getBallSpeedAbility().isActive()) {
-                    board.getComputerPlate().getBallSpeedAbility().deactivate();
-                    ballSpeedAbility.setCooldown(25);
-                } else {
-                    ballSpeedAbility.activate();
-                    ballSpeedAbility.setCooldown(25);
-                    board.getBall().setImage(Images.whileAbilityBall);
-                }
-
-            } else {
-
-                if (board.getWASDRemotablePlate().getBallSpeedAbility().isActive()) {
-                    board.getWASDRemotablePlate().getBallSpeedAbility().deactivate();
-                    ballSpeedAbility.setCooldown(25);
-                } else {
-                    ballSpeedAbility.activate();
-                    ballSpeedAbility.setCooldown(25);
-                    board.getBall().setImage(Images.whileAbilityBall);
-                }
-            }
-
-        }
-        if (keyEventHandler.isRightKeyPressed() && removeEnemyScoreAbility.getCooldown() <= 0){
-            if (board.getGameSetting().isSingleplayer()) {
-                if (keyEventHandler.isRightKeyPressed() && removeEnemyScoreAbility.getCooldown() <= 0 && board.getScore().getEnemyScore() != 0){
-                    removeEnemyScoreAbility.activate();
-                    removeEnemyScoreAbility.setCooldown(25);
-                }
-            }else{
-                if (keyEventHandler.isRightKeyPressed() && removeEnemyScoreAbility.getCooldown() <= 0 && board.getScore().getEnemyScore() != 0){
-                    removeEnemyScoreAbility.activate();
-                    removeEnemyScoreAbility.setCooldown(25);
-                }
-            }
-
+    @Override
+    public void checkChangeBallSpeedAbilityActivation() {
+        if (board.getComputerPlate().getBallSpeedAbility().isActive()) {
+            board.getComputerPlate().getBallSpeedAbility().deactivate();
+            changeBallSpeedAbility.setCooldown(25);
+        } else {
+            changeBallSpeedAbility.activate();
+            changeBallSpeedAbility.setCooldown(25);
+            board.getBall().setImage(Images.whileAbilityBall);
         }
 
-
+    }
+    public void checkChangeBallSpeedAbilityActivationMultiplayer(){
+        if (board.getWASDRemotablePlate().getBallSpeedAbility().isActive()) {
+            board.getWASDRemotablePlate().getBallSpeedAbility().deactivate();
+            changeBallSpeedAbility.setCooldown(25);
+        } else {
+            changeBallSpeedAbility.activate();
+            changeBallSpeedAbility.setCooldown(25);
+            board.getBall().setImage(Images.whileAbilityBall);
+        }
     }
 
+    @Override
+    public void checkStealEnemyPointsAbilityActivation() {
+        if (keyEventHandler.isRightKeyPressed() && stealEnemyPointAbility.getCooldown() <= 0 && board.getScore().getEnemyScore() != 0){
+            stealEnemyPointAbility.activate();
+            stealEnemyPointAbility.setCooldown(25);
+        }
 
-    public BallSpeedAbility getBallSpeedAbility() {
-        return ballSpeedAbility;
+    }
+    public void checkStealEnemyPointsAbilityActivationMultiplayer() {
+        if (keyEventHandler.isRightKeyPressed() && stealEnemyPointAbility.getCooldown() <= 0 && board.getScore().getEnemyScore() != 0){
+            stealEnemyPointAbility.activate();
+            stealEnemyPointAbility.setCooldown(25);
+        }
+    }
+    public ChangeBallSpeedAbility getBallSpeedAbility() {
+        return changeBallSpeedAbility;
     }
 
-    public RemoveEnemyScoreAbility getRemoveEnemyScoreAbility() {
-        return removeEnemyScoreAbility;
+    public StealEnemyPointAbility getRemoveEnemyScoreAbility() {
+        return stealEnemyPointAbility;
     }
 }

@@ -6,5 +6,4 @@ public enum SceneType {
     INGAME,
     GAMEOVER,
     INFO
-
 }

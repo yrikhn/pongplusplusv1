@@ -17,27 +17,20 @@ public class Sound {
 
     private static MediaPlayer createMediaPlayer(String filePath) {
         filePath = "/soundFX/" + filePath;
-
         if (!cache.containsKey(filePath)) {
             URL url = Sound.class.getResource(filePath);
             if (url == null) {
                 throw new RuntimeException("Could not load file: " + filePath);
             }
-
             cache.put(filePath, new Media(url.toString()));
         }
-
         return new MediaPlayer(cache.get(filePath));
     }
 
     private static String getSoundFileName(SoundEffectType soundEffect) {
-        switch (soundEffect) {
-            case ONHIT:
-                return "onhitsound.mp3";
-            case ONCLICK:
-                return "onclicksound.mp3";
-            default:
-                throw new RuntimeException("No Soundfilename set for this enum value:" + soundEffect);
-        }
+        return switch (soundEffect) {
+            case ONHIT -> "onhitsound.mp3";
+            case ONCLICK -> "onclicksound.mp3";
+        };
     }
 }

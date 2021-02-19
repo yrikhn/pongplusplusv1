@@ -1,59 +1,61 @@
 pongplusplus/common/Initializable.java
  pongplusplus.common.Initializable
-pongplusplus/game/SoundEffectType.java
- pongplusplus.game.SoundEffectType
+pongplusplus/gui/DifficultySelectionScene.java
+ pongplusplus.gui.DifficultySelectionScene
 pongplusplus/game/Score.java
  pongplusplus.game.Score
+pongplusplus/game/GameSetting.java
+ pongplusplus.game.GameSetting
+pongplusplus/common/GodLikeAnimationTimer.java
+ pongplusplus.common.GodLikeAnimationTimer
+pongplusplus/game/gameobjects/RemotablePlate_Arrow.java
+ pongplusplus.game.gameobjects.RemotablePlate_Arrow
+pongplusplus/game/ChangeBallSpeedAbility.java
+ pongplusplus.game.ChangeBallSpeedAbility
+pongplusplus/common/BaseScene.java
+ pongplusplus.common.BaseScene
+pongplusplus/game/gameobjects/Ball.java
+ pongplusplus.game.gameobjects.Ball
+pongplusplus/game/Images.java
+ pongplusplus.game.Images
+pongplusplus/gui/InfoScene.java
+ pongplusplus.gui.InfoScene
+pongplusplus/gui/GameOverScene.java
+ pongplusplus.gui.GameOverScene
+pongplusplus/common/Navigator.java
+ pongplusplus.common.Navigator
+pongplusplus/game/StealEnemyPointAbility.java
+ pongplusplus.game.StealEnemyPointAbility
+pongplusplus/game/gameobjects/Gameobject.java
+ pongplusplus.game.gameobjects.Gameobject
+pongplusplus/common/Util.java
+ pongplusplus.common.Util
+pongplusplus/game/gameobjects/ComputerPlate.java
+ pongplusplus.game.gameobjects.ComputerPlate
 pongplusplus/game/KeyEventHandler.java
  pongplusplus.game.KeyEventHandler
  pongplusplus.game.KeyEventHandler$1
-pongplusplus/common/GodLikeAnimationTimer.java
- pongplusplus.common.GodLikeAnimationTimer
-pongplusplus/game/Images.java
- pongplusplus.game.Images
-pongplusplus/game/BallSpeedAbility.java
- pongplusplus.game.BallSpeedAbility
-pongplusplus/game/Const.java
- pongplusplus.game.Const
-pongplusplus/common/Util.java
- pongplusplus.common.Util
-pongplusplus/game/Sound.java
- pongplusplus.game.Sound
- pongplusplus.game.Sound$1
-pongplusplus/gui/Style.java
- pongplusplus.gui.Style
-pongplusplus/game/gameobjects/Gameobject.java
- pongplusplus.game.gameobjects.Gameobject
-pongplusplus/gui/DifficultySelectionScene.java
- pongplusplus.gui.DifficultySelectionScene
-pongplusplus/game/GameSetting.java
- pongplusplus.game.GameSetting
-pongplusplus/game/gameobjects/ComputerPlate.java
- pongplusplus.game.gameobjects.ComputerPlate
+pongplusplus/game/SoundEffectType.java
+ pongplusplus.game.SoundEffectType
 pongplusplus/game/SceneType.java
  pongplusplus.game.SceneType
-pongplusplus/game/gameobjects/RemotablePlate_Arrow.java
- pongplusplus.game.gameobjects.RemotablePlate_Arrow
 pongplusplus/game/gameobjects/RemotablePlate_WASD.java
  pongplusplus.game.gameobjects.RemotablePlate_WASD
 pongplusplus/gui/InGameScene.java
  pongplusplus.gui.InGameScene
  pongplusplus.gui.InGameScene$1
-pongplusplus/common/BaseScene.java
- pongplusplus.common.BaseScene
+pongplusplus/game/gameobjects/PlateObject.java
+ pongplusplus.game.gameobjects.PlateObject
 pongplusplus/game/Board.java
  pongplusplus.game.Board
-pongplusplus/game/gameobjects/Ball.java
- pongplusplus.game.gameobjects.Ball
+pongplusplus/game/Sound.java
+ pongplusplus.game.Sound
+ pongplusplus.game.Sound$1
 pongplusplus/gui/GamemodeSelectionScene.java
  pongplusplus.gui.GamemodeSelectionScene
-pongplusplus/gui/InfoScene.java
- pongplusplus.gui.InfoScene
 pongplusplus/main/PongPlusPlusApp.java
  pongplusplus.main.PongPlusPlusApp
-pongplusplus/game/RemoveEnemyScoreAbility.java
- pongplusplus.game.RemoveEnemyScoreAbility
-pongplusplus/gui/GameOverScene.java
- pongplusplus.gui.GameOverScene
-pongplusplus/common/Navigator.java
- pongplusplus.common.Navigator
+pongplusplus/gui/Style.java
+ pongplusplus.gui.Style
+pongplusplus/game/Const.java
+ pongplusplus.game.Const

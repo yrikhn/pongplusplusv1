@@ -22,7 +22,6 @@ public class DifficultySelectionScene extends BaseScene implements Initializable
     public void onInitialize() {
         ImageView backgroundImage = new ImageView();
         backgroundImage.setImage(Images.DIFFICULTY_SELECTION_SCENE);
-
         Button easy = new Button("EASY");
         easy.setOnAction(e -> {
             gameSetting.setDifficulty(3, navigator);
@@ -30,7 +29,6 @@ public class DifficultySelectionScene extends BaseScene implements Initializable
         });
         easy.setLayoutX(201);
         easy.setLayoutY(425);
-
         Button medium = new Button("MEDIUM");
         medium.setOnAction(e -> {
             gameSetting.setDifficulty(4.5, navigator);
@@ -38,7 +36,6 @@ public class DifficultySelectionScene extends BaseScene implements Initializable
         });
         medium.setLayoutX(433);
         medium.setLayoutY(425);
-
         Button hard = new Button("HARD");
         hard.setOnAction(e -> {
             gameSetting.setDifficulty(6, navigator);
@@ -54,12 +51,10 @@ public class DifficultySelectionScene extends BaseScene implements Initializable
         });
         info.setLayoutX(20);
         info.setLayoutY(20);
-
         Style.changeStyle(easy, 135, 75);
         Style.changeStyle(medium, 135, 75);
         Style.changeStyle(hard,135,75);
         Style.changeStyle(info, 95, 50);
-
         Group root = new Group();
         welcomeScene = new Scene(root);
         root.getChildren().addAll(backgroundImage, easy, medium, hard, info);
