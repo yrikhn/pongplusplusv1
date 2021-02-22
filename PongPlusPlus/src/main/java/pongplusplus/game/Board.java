@@ -15,6 +15,7 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
     private Runnable gameLoopStopper;
     private Score score;
     private GameSetting gameSetting;
+    private PlateObject enemyPlate;
 
 
     public Board(KeyEventHandler keyEventHandler, Navigator navigator, Runnable gameLoopStopper, Score score, GameSetting gameSetting) {
@@ -28,16 +29,20 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
 
     public void generateObject() {
         add(new Ball(Const.SCREEN_WIDTH / 2, Const.SCREEN_WIDTH / 2, this, gameSetting.getDifficulty(), score));
-        add(new RemotablePlate_Arrow(keyEventHandler, 970, 280, this));
+        add(new ControllablePlate_Arrow(keyEventHandler, 970, 280, this));
         decideGamemode();
 
     }
 
     public void decideGamemode() {
         if (gameSetting.isSingleplayer()) {
-            add(new ComputerPlate(280, this));
+            add(new ComputerPlate(280, this, getArrowRemotablePlate()));
+            getArrowRemotablePlate().setEnemyPlate(getComputerPlate());
+            enemyPlate = getComputerPlate();
         } else {
-            add(new RemotablePlate_WASD(keyEventHandler, 28, 280, this));
+            add(new ControllablePlate_WASD(keyEventHandler, 28, 280, this, getArrowRemotablePlate()));
+            getArrowRemotablePlate().setEnemyPlate(getWASDRemotablePlate());
+            enemyPlate = getWASDRemotablePlate();
         }
     }
 
@@ -87,41 +92,28 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
 
 
     private void displayAbilityAvailability(GraphicsContext gc) {
-        if (Math.round(getArrowRemotablePlate().getBallSpeedAbility().getCooldown()) > 0) {
-            gc.fillText(Math.round(getArrowRemotablePlate().getBallSpeedAbility().getCooldown()) + " S", 798, 35);
+        if (Math.round(getArrowRemotablePlate().getBallSpeedManipulator().getCooldown()) > 0) {
+            gc.fillText(Math.round(getArrowRemotablePlate().getBallSpeedManipulator().getCooldown()) + " S", 798, 35);
         } else {
             gc.drawImage(Images.readyIcon, 793, 15);
         }
-        if (Math.round(getArrowRemotablePlate().getRemoveEnemyScoreAbility().getCooldown()) > 0) {
-            gc.fillText(Math.round(getArrowRemotablePlate().getRemoveEnemyScoreAbility().getCooldown()) + " S", 965, 35);
+        if (Math.round(getArrowRemotablePlate().getPointStealer().getCooldown()) > 0) {
+            gc.fillText(Math.round(getArrowRemotablePlate().getPointStealer().getCooldown()) + " S", 965, 35);
         } else {
             gc.drawImage(Images.readyIcon, 960, 15);
         }
 
-        if (gameSetting.isSingleplayer()) {
-            if (Math.round(getComputerPlate().getBallSpeedAbility().getCooldown()) > 0) {
-                gc.fillText(Math.round(getComputerPlate().getBallSpeedAbility().getCooldown()) + " S", 65, 35);
-            } else {
-                gc.drawImage(Images.readyIcon, 69, 15);
-            }
-            if (Math.round(getComputerPlate().getRemoveEnemyScoreAbility().getCooldown()) > 0) {
-                gc.fillText(Math.round(getComputerPlate().getRemoveEnemyScoreAbility().getCooldown()) + " S", 218, 35);
-            } else {
-                gc.drawImage(Images.readyIcon, 213, 15);
-            }
-
+        if (Math.round(enemyPlate.getBallSpeedManipulator().getCooldown()) > 0) {
+            gc.fillText(Math.round(enemyPlate.getBallSpeedManipulator().getCooldown()) + " S", 65, 35);
         } else {
-            if (Math.round(getWASDRemotablePlate().getBallSpeedAbility().getCooldown()) > 0) {
-                gc.fillText(Math.round(getWASDRemotablePlate().getBallSpeedAbility().getCooldown()) + " S", 80, 35);
-            } else {
-                gc.drawImage(Images.readyIcon, 80, 15);
-            }
-            if (Math.round(getWASDRemotablePlate().getRemoveEnemyScoreAbility().getCooldown()) > 0) {
-                gc.fillText(Math.round(getWASDRemotablePlate().getRemoveEnemyScoreAbility().getCooldown()) + " S", 345, 35);
-            } else {
-                gc.drawImage(Images.readyIcon, 345, 15);
-            }
+            gc.drawImage(Images.readyIcon, 69, 15);
         }
+        if (Math.round(enemyPlate.getPointStealer().getCooldown()) > 0) {
+            gc.fillText(Math.round(enemyPlate.getPointStealer().getCooldown()) + " S", 218, 35);
+        } else {
+            gc.drawImage(Images.readyIcon, 213, 15);
+        }
+
     }
 
 
@@ -130,12 +122,12 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
     }
 
 
-    public RemotablePlate_Arrow getArrowRemotablePlate() {
-        return Util.getAllObjectsFromType(RemotablePlate_Arrow.class, this).get(0);
+    public ControllablePlate_Arrow getArrowRemotablePlate() {
+        return Util.getAllObjectsFromType(ControllablePlate_Arrow.class, this).get(0);
     }
 
-    public RemotablePlate_WASD getWASDRemotablePlate() {
-        return Util.getAllObjectsFromType(RemotablePlate_WASD.class, this).get(0);
+    public ControllablePlate_WASD getWASDRemotablePlate() {
+        return Util.getAllObjectsFromType(ControllablePlate_WASD.class, this).get(0);
     }
 
     public ComputerPlate getComputerPlate() {

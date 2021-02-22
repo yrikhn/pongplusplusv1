@@ -3,14 +3,14 @@ package pongplusplus.game;
 
 import pongplusplus.game.gameobjects.Ball;
 
-public class ChangeBallSpeedAbility {
+public class BallSpeedManipulator {
     private double pos_x;
     private double cooldown = 0;
     private Ball ball;
     private double startTime = 10;
     private boolean active = false;
 
-    public ChangeBallSpeedAbility(Ball ball, double pos_x) {
+    public BallSpeedManipulator(Ball ball, double pos_x) {
         this.ball = ball;
         this.pos_x = pos_x;
     }

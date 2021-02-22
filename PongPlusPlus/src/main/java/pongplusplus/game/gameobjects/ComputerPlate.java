@@ -5,34 +5,28 @@ import pongplusplus.game.*;
 import java.util.Random;
 
 
-public class ComputerPlate extends Gameobject implements PlateObject{
-    private Board board;
+public class ComputerPlate extends PlateObject {
     private double randomNumb;
     private Random random = new Random();
-    private ChangeBallSpeedAbility changeBallSpeedAbility;
-    private StealEnemyPointAbility stealEnemyPointAbility;
 
-    public ComputerPlate(double y, Board board) {
-        super(28, y, Images.plate);
-        this.board = board;
-        changeBallSpeedAbility = new ChangeBallSpeedAbility(board.getBall(), pos_x);
-        stealEnemyPointAbility = new StealEnemyPointAbility(board, this);
+
+    public ComputerPlate(double y, Board board, PlateObject enemyPlate) {
+        super(28, y, Images.plate, enemyPlate, board);
     }
 
     @Override
     public void update(double deltaInSec) {
 
         randomNumb = random.nextInt(500);
-
         checkMovement(deltaInSec);
-        checkChangeBallSpeedAbilityActivation();
-        checkStealEnemyPointsAbilityActivation();
-
-
-
-        changeBallSpeedAbility.update(deltaInSec);
-        stealEnemyPointAbility.update(deltaInSec);
+        checkBallSpeedManipulatorActivation();
+        checkPointStealerActivation();
+        ballSpeedManipulator.update(deltaInSec);
+        pointStealer.update(deltaInSec);
     }
+
+
+    @Override
     public void checkMovement(double deltaInSec){
         if (board.getBall().getPos_x() <= Const.SCREEN_WIDTH / 4 * 3) {
 
@@ -43,30 +37,22 @@ public class ComputerPlate extends Gameobject implements PlateObject{
             }
         }
     }
-    public void checkChangeBallSpeedAbilityActivation(){
-        if (randomNumb == 1 && changeBallSpeedAbility.getCooldown() <= 0 && !changeBallSpeedAbility.isActive()) {
-            if (board.getArrowRemotablePlate().getBallSpeedAbility().isActive()) {
-                board.getArrowRemotablePlate().getBallSpeedAbility().deactivate();
-                changeBallSpeedAbility.setCooldown(25);
-            } else {
-                changeBallSpeedAbility.activate();
-                changeBallSpeedAbility.setCooldown(25);
-                board.getBall().setImage(Images.whileAbilityBall);
-            }
-        }
-    }
-    public void checkStealEnemyPointsAbilityActivation(){
-        if (randomNumb == 265 && stealEnemyPointAbility.getCooldown() <= 0 && board.getScore().getPlayerScore() != 0) {
-            stealEnemyPointAbility.activate();
-            stealEnemyPointAbility.setCooldown(25);
+
+
+    @Override
+    public void checkBallSpeedManipulatorActivation() {
+        if (randomNumb == 1 && ballSpeedManipulator.getCooldown() <= 0 && !ballSpeedManipulator.isActive()) {
+            activateBallSpeedManipulator();
         }
     }
 
-    public ChangeBallSpeedAbility getBallSpeedAbility() {
-        return changeBallSpeedAbility;
+
+    @Override
+    public void checkPointStealerActivation() {
+        if (randomNumb == 265 && pointStealer.getCooldown() <= 0 && board.getScore().getPlayerScore() != 0) {
+            pointStealer.activate();
+            pointStealer.setCooldown(25);
+        }
     }
 
-    public StealEnemyPointAbility getRemoveEnemyScoreAbility() {
-        return stealEnemyPointAbility;
-    }
 }
