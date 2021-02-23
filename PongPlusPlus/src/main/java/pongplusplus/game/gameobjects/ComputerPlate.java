@@ -1,7 +1,6 @@
 package pongplusplus.game.gameobjects;
 
 import pongplusplus.game.*;
-
 import java.util.Random;
 
 
@@ -29,11 +28,10 @@ public class ComputerPlate extends PlateObject {
     @Override
     public void checkMovement(double deltaInSec){
         if (board.getBall().getPos_x() <= Const.SCREEN_WIDTH / 4 * 3) {
-
-            if (board.getBall().getPos_y() - 26 > pos_y && pos_y + Const.PLATE_HEIGHT < 600) {
-                pos_y += deltaInSec * 250;
-            } else if (board.getBall().getPos_y() - 26 < pos_y + 57 && pos_y > 61) {
-                pos_y -= deltaInSec * 250;
+            if (board.getBall().getPos_y() - Const.PLATE_HEIGHT/2 > pos_y && pos_y + Const.PLATE_HEIGHT < Const.SCREEN_HEIGHT) {
+                pos_y += deltaInSec * SPEED;
+            } else if (board.getBall().getPos_y() - Const.PLATE_HEIGHT/2 < pos_y + Const.PLATE_HEIGHT && pos_y > Const.TOP_BORDER_Y_POSITION) {
+                pos_y -= deltaInSec * SPEED;
             }
         }
     }
@@ -50,8 +48,7 @@ public class ComputerPlate extends PlateObject {
     @Override
     public void checkPointStealerActivation() {
         if (randomNumb == 265 && pointStealer.getCooldown() <= 0 && board.getScore().getPlayerScore() != 0) {
-            pointStealer.activate();
-            pointStealer.setCooldown(25);
+            activatePointStealer();
         }
     }
 

@@ -3,9 +3,7 @@ package pongplusplus.game.gameobjects;
 import pongplusplus.game.*;
 
 public class ControllablePlate_Arrow extends PlateObject{
-
     private KeyEventHandler keyEventHandler;
-    private double SPEED = 250;
 
 
     public ControllablePlate_Arrow(KeyEventHandler keyEventHandler, int x, int y, Board board) {
@@ -16,9 +14,9 @@ public class ControllablePlate_Arrow extends PlateObject{
 
     @Override
     public void checkMovement(double deltaInSec) {
-        if (keyEventHandler.isUpKeyPressed() && pos_y > 61) {
+        if (keyEventHandler.isUpKeyPressed() && pos_y > Const.TOP_BORDER_Y_POSITION) {
             pos_y -= deltaInSec * SPEED;
-        } else if (keyEventHandler.isDownKeyPressed() && pos_y < 541) {
+        } else if (keyEventHandler.isDownKeyPressed() && pos_y < Const.BOTTOM_BORDER_Y_POSITION) {
             pos_y += deltaInSec * SPEED;
         }
     }
@@ -34,8 +32,7 @@ public class ControllablePlate_Arrow extends PlateObject{
     @Override
     public void checkPointStealerActivation() {
         if (keyEventHandler.isRightKeyPressed() && pointStealer.getCooldown() <= 0 && board.getScore().getEnemyScore() != 0){
-            pointStealer.activate();
-            pointStealer.setCooldown(25);
+            activatePointStealer();
         }
 
     }

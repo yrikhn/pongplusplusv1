@@ -3,11 +3,12 @@ package pongplusplus.game.gameobjects;
 import javafx.scene.image.Image;
 import pongplusplus.game.*;
 
-public abstract class PlateObject extends Gameobject{
+public abstract class PlateObject extends Gameobject {
     protected PlateObject enemyPlate;
     protected Board board;
     protected BallSpeedManipulator ballSpeedManipulator;
     protected PointStealer pointStealer;
+    protected double SPEED = 250;
 
     public PlateObject(double x, double y, Image image, PlateObject enemyPlate, Board board) {
         super(x, y, image);
@@ -24,17 +25,22 @@ public abstract class PlateObject extends Gameobject{
         pointStealer = new PointStealer(board, this);
     }
 
-
-    public void activateBallSpeedManipulator(){
+    public void activateBallSpeedManipulator() {
         if (enemyPlate.ballSpeedManipulator.isActive()) {
             enemyPlate.ballSpeedManipulator.deactivate();
-            ballSpeedManipulator.setCooldown(25);
+            ballSpeedManipulator.setCooldown(Const.ABILITY_COOLDOWN);
         } else {
             ballSpeedManipulator.activate();
-            ballSpeedManipulator.setCooldown(25);
+            ballSpeedManipulator.setCooldown(Const.ABILITY_COOLDOWN);
             board.getBall().setImage(Images.whileAbilityBall);
         }
     }
+
+    public void activatePointStealer(){
+        pointStealer.activate();
+        pointStealer.setCooldown(Const.ABILITY_COOLDOWN);
+    }
+
     @Override
     public void update(double deltaInSec) {
         checkMovement(deltaInSec);
@@ -44,17 +50,11 @@ public abstract class PlateObject extends Gameobject{
         pointStealer.update(deltaInSec);
     }
 
-
-
     public abstract void checkMovement(double deltaInSec);
 
     public abstract void checkBallSpeedManipulatorActivation();
 
     public abstract void checkPointStealerActivation();
-
-    public void setEnemyPlate(PlateObject enemyPlate){
-        this.enemyPlate = enemyPlate;
-    }
 
     public BallSpeedManipulator getBallSpeedManipulator() {
         return ballSpeedManipulator;
@@ -64,8 +64,9 @@ public abstract class PlateObject extends Gameobject{
         return pointStealer;
     }
 
-
-
+    public void setEnemyPlate(PlateObject enemyPlate) {
+        this.enemyPlate = enemyPlate;
+    }
 
 
 }

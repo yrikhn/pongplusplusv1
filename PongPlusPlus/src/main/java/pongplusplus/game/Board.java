@@ -36,13 +36,13 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
 
     public void decideGamemode() {
         if (gameSetting.isSingleplayer()) {
-            add(new ComputerPlate(280, this, getArrowRemotablePlate()));
-            getArrowRemotablePlate().setEnemyPlate(getComputerPlate());
+            add(new ComputerPlate(280, this, getControllablePlate_Arrow()));
+            getControllablePlate_Arrow().setEnemyPlate(getComputerPlate());
             enemyPlate = getComputerPlate();
         } else {
-            add(new ControllablePlate_WASD(keyEventHandler, 28, 280, this, getArrowRemotablePlate()));
-            getArrowRemotablePlate().setEnemyPlate(getWASDRemotablePlate());
-            enemyPlate = getWASDRemotablePlate();
+            add(new ControllablePlate_WASD(keyEventHandler, 28, 280, this, getControllablePlate_Arrow()));
+            getControllablePlate_Arrow().setEnemyPlate(getControllablePlate_WASD());
+            enemyPlate = getControllablePlate_WASD();
         }
     }
 
@@ -55,22 +55,19 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
             navigator.goTo(SceneType.GAMEOVER);
             stop();
         }
-
         for (Gameobject object : this) {
             object.update(deltaInSec);
         }
-
     }
 
 
     public void draw(GraphicsContext gc) {
-        gc.clearRect(0, 0, pongplusplus.game.Const.SCREEN_WIDTH, pongplusplus.game.Const.SCREEN_HEIGHT);
-
+        gc.clearRect(0, 0, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
         gc.setFill(Paint.valueOf("#000000"));
-        gc.fillRect(0, 0, 1000, 600);
+        gc.fillRect(0, 0, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
         gc.setFill(Paint.valueOf("#FFFFFF"));
-        gc.fillRect(494.5, 0, 11, 600);
-        gc.fillRect(0, 50, 1000, 11);
+        gc.fillRect(494.5, 0, 11, Const.SCREEN_HEIGHT);
+        gc.fillRect(0, 50, Const.SCREEN_WIDTH, 11);
 
         gc.setFont(new Font(30));
         gc.fillText("A : ", 23, 35);
@@ -92,17 +89,16 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
 
 
     private void displayAbilityAvailability(GraphicsContext gc) {
-        if (Math.round(getArrowRemotablePlate().getBallSpeedManipulator().getCooldown()) > 0) {
-            gc.fillText(Math.round(getArrowRemotablePlate().getBallSpeedManipulator().getCooldown()) + " S", 798, 35);
+        if (Math.round(getControllablePlate_Arrow().getBallSpeedManipulator().getCooldown()) > 0) {
+            gc.fillText(Math.round(getControllablePlate_Arrow().getBallSpeedManipulator().getCooldown()) + " S", 798, 35);
         } else {
             gc.drawImage(Images.readyIcon, 793, 15);
         }
-        if (Math.round(getArrowRemotablePlate().getPointStealer().getCooldown()) > 0) {
-            gc.fillText(Math.round(getArrowRemotablePlate().getPointStealer().getCooldown()) + " S", 965, 35);
+        if (Math.round(getControllablePlate_Arrow().getPointStealer().getCooldown()) > 0) {
+            gc.fillText(Math.round(getControllablePlate_Arrow().getPointStealer().getCooldown()) + " S", 965, 35);
         } else {
             gc.drawImage(Images.readyIcon, 960, 15);
         }
-
         if (Math.round(enemyPlate.getBallSpeedManipulator().getCooldown()) > 0) {
             gc.fillText(Math.round(enemyPlate.getBallSpeedManipulator().getCooldown()) + " S", 65, 35);
         } else {
@@ -113,7 +109,6 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         } else {
             gc.drawImage(Images.readyIcon, 213, 15);
         }
-
     }
 
 
@@ -122,11 +117,11 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
     }
 
 
-    public ControllablePlate_Arrow getArrowRemotablePlate() {
+    public ControllablePlate_Arrow getControllablePlate_Arrow() {
         return Util.getAllObjectsFromType(ControllablePlate_Arrow.class, this).get(0);
     }
 
-    public ControllablePlate_WASD getWASDRemotablePlate() {
+    public ControllablePlate_WASD getControllablePlate_WASD() {
         return Util.getAllObjectsFromType(ControllablePlate_WASD.class, this).get(0);
     }
 
@@ -134,8 +129,8 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         return Util.getAllObjectsFromType(ComputerPlate.class, this).get(0);
     }
 
-    public GameSetting getGameSetting() {
-        return gameSetting;
+    public PlateObject getEnemyPlate() {
+        return enemyPlate;
     }
 
     public Score getScore() {

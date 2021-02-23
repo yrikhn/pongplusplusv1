@@ -33,27 +33,18 @@ public class Ball extends Gameobject {
         pos_y += balldiry;
     }
 
-    public void resetSpeed() {
-        SPEED = originalSpeed;
-    }
+
 
     private void checkWin() {
-        if (pos_x + 20 >= Const.SCREEN_WIDTH) {
-
+        if (pos_x + Const.BALL_HEIGHT_WIDTH >= Const.SCREEN_WIDTH) {
             pos_x = Const.SCREEN_WIDTH / 2 - 10;
             pos_y = Const.SCREEN_HEIGHT / 2 - 10;
-
             balldirx = -SPEED;
             score.addGegnerPoints();
-
-
         }
-
         if (pos_x <= 0) {
-
             pos_x = Const.SCREEN_WIDTH / 2 - 10;
             pos_y = Const.SCREEN_HEIGHT / 2 - 10;
-
             balldirx = SPEED;
             score.addPlayerPoints();
 
@@ -62,32 +53,25 @@ public class Ball extends Gameobject {
 
 
     private void borderCollisionCheck() {
-        if (pos_y + 14 >= Const.SCREEN_HEIGHT) {
+        if (pos_y + Const.BALL_HEIGHT_WIDTH >= Const.SCREEN_HEIGHT) {
             balldiry = -SPEED;
             Sound.play(SoundEffectType.ONHIT);
         }
 
-        if (pos_y <= 61) {
+        if (pos_y <= Const.TOP_BORDER_Y_POSITION) {
             balldiry = SPEED;
             Sound.play(SoundEffectType.ONHIT);
         }
     }
 
     private void plateCollisionCheck() {
-        if (pos_x < board.getArrowRemotablePlate().pos_x && pos_x > board.getArrowRemotablePlate().pos_x - 20 && pos_y - Const.BALL_HEIGHT_WIDTH < board.getArrowRemotablePlate().pos_y + Const.PLATE_HEIGHT && pos_y > board.getArrowRemotablePlate().pos_y) {
+        if (pos_x < board.getControllablePlate_Arrow().pos_x && pos_x > board.getControllablePlate_Arrow().pos_x - 20 && pos_y - Const.BALL_HEIGHT_WIDTH < board.getControllablePlate_Arrow().pos_y + Const.PLATE_HEIGHT && pos_y > board.getControllablePlate_Arrow().pos_y) {
             balldirx = -SPEED;
             Sound.play(SoundEffectType.ONHIT);
         }
-        if (board.getGameSetting().isSingleplayer()) {
-            if (pos_x < board.getComputerPlate().pos_x && pos_x > board.getComputerPlate().pos_x - 10 && pos_y - Const.BALL_HEIGHT_WIDTH < board.getComputerPlate().pos_y + Const.PLATE_HEIGHT && pos_y > board.getComputerPlate().pos_y) {
-                balldirx = SPEED;
-                Sound.play(SoundEffectType.ONHIT);
-            }
-        } else {
-            if (pos_x < board.getWASDRemotablePlate().pos_x && pos_x > board.getWASDRemotablePlate().pos_x - 10 && pos_y - Const.BALL_HEIGHT_WIDTH < board.getWASDRemotablePlate().pos_y + Const.PLATE_HEIGHT && pos_y > board.getWASDRemotablePlate().pos_y) {
-                balldirx = SPEED;
-                Sound.play(SoundEffectType.ONHIT);
-            }
+        if (pos_x < board.getEnemyPlate().pos_x && pos_x > board.getEnemyPlate().pos_x - 10 && pos_y - Const.BALL_HEIGHT_WIDTH < board.getEnemyPlate().pos_y + Const.PLATE_HEIGHT && pos_y > board.getEnemyPlate().pos_y) {
+            balldirx = SPEED;
+            Sound.play(SoundEffectType.ONHIT);
         }
     }
 
@@ -104,6 +88,8 @@ public class Ball extends Gameobject {
             balldiry = SPEED;
         }
     }
-
+    public void resetSpeed() {
+        SPEED = originalSpeed;
+    }
 
 }
