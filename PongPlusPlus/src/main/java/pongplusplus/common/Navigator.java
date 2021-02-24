@@ -29,7 +29,6 @@ public class Navigator {
         if (activeScene instanceof Initializable) {
             ((Initializable) activeScene).onInitialize();
         }
-
         if (activeScene instanceof GameOverScene) {
             activeScene = GameOverScene.getScene();
         } else if (activeScene instanceof DifficultySelectionScene) {

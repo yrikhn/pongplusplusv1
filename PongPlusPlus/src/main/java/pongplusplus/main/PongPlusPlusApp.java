@@ -9,15 +9,19 @@ import pongplusplus.game.GameSetting;
 import pongplusplus.game.Score;
 import pongplusplus.gui.*;
 
+import javax.swing.*;
+
 public class  PongPlusPlusApp extends Application {
     @Override
     public void start(Stage stage) {
+        Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
+            // TODO: Logging
+            JOptionPane.showMessageDialog(null, "Something goes wrong!");
+        });
         stage.setTitle("PONG++");
-
         Navigator navigator = new Navigator(stage);
         Score score = new Score();
         GameSetting gameSetting = new GameSetting();
-
         navigator.registerScene(SceneType.DIFFICULTY_SELECTION, new DifficultySelectionScene(navigator, gameSetting));
         navigator.registerScene(SceneType.GAMEMODE_SELECTION, new GamemodeSelectionScene(navigator, gameSetting));
         navigator.registerScene(SceneType.INGAME, new InGameScene(navigator, score, gameSetting));
@@ -29,8 +33,10 @@ public class  PongPlusPlusApp extends Application {
         stage.setMinWidth(Const.SCREEN_WIDTH);
         stage.setMaxWidth(Const.SCREEN_WIDTH);
         stage.show();
+
     }
     public static void main(String[] args) {
+
         launch(args);
     }
 

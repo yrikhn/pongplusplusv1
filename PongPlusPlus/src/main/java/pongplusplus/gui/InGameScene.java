@@ -18,10 +18,10 @@ public class InGameScene extends BaseScene implements Initializable {
     @Override
     public void onInitialize() {
         score.resetScore();
-        KeyEventHandler keyEventHandler = new KeyEventHandler();
-        this.setOnKeyPressed(keyEventHandler);
-        this.setOnKeyReleased(keyEventHandler);
-        Board board = new Board(keyEventHandler, navigator, () -> gameLoop.stop(), score, gameSetting);
+        KeyEventHandler keyEventHandlerArrow = new KeyEventHandler();
+        this.setOnKeyPressed(keyEventHandlerArrow);
+        this.setOnKeyReleased(keyEventHandlerArrow);
+        Board board = new Board(keyEventHandlerArrow, navigator, () -> gameLoop.stop(), score, gameSetting);
         board.generateObject();
         gameLoop = new GodLikeAnimationTimer() {
             @Override

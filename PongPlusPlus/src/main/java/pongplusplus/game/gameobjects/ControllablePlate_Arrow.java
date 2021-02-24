@@ -6,9 +6,9 @@ public class ControllablePlate_Arrow extends PlateObject{
     private KeyEventHandler keyEventHandler;
 
 
-    public ControllablePlate_Arrow(KeyEventHandler keyEventHandler, int x, int y, Board board) {
+    public ControllablePlate_Arrow(KeyEventHandler keyEventHandlerArrow, int x, int y, Board board) {
         super(x, y, Images.plate, board);
-        this.keyEventHandler = keyEventHandler;
+        this.keyEventHandler = keyEventHandlerArrow;
     }
 
 
