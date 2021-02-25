@@ -44,6 +44,7 @@ public class GamemodeSelectionScene extends BaseScene implements Initializable {
 
         });
         multiplayerBtn.setOnAction(e -> {
+            gameSetting.setSingleplayer(false);
             navigator.goTo(SceneType.DIFFICULTY_SELECTION);
             Sound.play(SoundEffectType.ONCLICK);
         });

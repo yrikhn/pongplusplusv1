@@ -17,10 +17,12 @@ public class GameOverScene extends BaseScene implements Initializable {
     private static Scene gameOverScene;
     private Text announcement = new Text("");
     private Score score;
+    private GameSetting gameSetting;
 
-    public GameOverScene(Navigator navigator, Score score) {
+    public GameOverScene(Navigator navigator, Score score, GameSetting gameSetting) {
         super(navigator);
         this.score = score;
+        this.gameSetting = gameSetting;
     }
 
     @Override
@@ -43,7 +45,8 @@ public class GameOverScene extends BaseScene implements Initializable {
         gameOverScene = new Scene(root);
         root.getChildren().addAll(backgroundImage, announcement, restart, exit);
         restart.setOnAction(e -> {
-            navigator.goTo(SceneType.DIFFICULTY_SELECTION);
+            navigator.goTo(SceneType.GAMEMODE_SELECTION);
+            gameSetting.resetSingleplayer();
             Sound.play(SoundEffectType.ONCLICK);
         });
         exit.setOnAction(e -> {

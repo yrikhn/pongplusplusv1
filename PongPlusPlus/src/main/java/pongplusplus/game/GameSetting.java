@@ -18,7 +18,11 @@ public class GameSetting {
 
     public void setSingleplayer(boolean value) {
         this.singleplayer = value;
-        this.gamemodeSelected = value;
+        this.gamemodeSelected = true;
+    }
+    public void resetSingleplayer(){
+        this.singleplayer = false;
+        this.gamemodeSelected = false;
     }
 
     public boolean isSingleplayer() {
