@@ -66,8 +66,8 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         gc.setFont(new Font(30));
         gc.fillText("A : ", 23, 35);
         gc.fillText("D : ", 167, 35);
-        gc.fillText("<- : ", 738, 35);
-        gc.fillText("-> : ", 907, 35);
+        gc.fillText("<- : ", 718, 35);
+        gc.fillText("-> : ", 887, 35);
         displayAbilityAvailability(gc);
         gc.setFont(new Font(40));
         gc.fillText("" + score.getEnemyScore(), 445, 35);
@@ -79,14 +79,14 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
 
     private void displayAbilityAvailability(GraphicsContext gc) {
         if (Math.round(getControllablePlate_Arrow().getBallSpeedManipulator().getCooldown()) > 0) {
-            gc.fillText(Math.round(getControllablePlate_Arrow().getBallSpeedManipulator().getCooldown()) + " S", 788, 35);
+            gc.fillText(Math.round(getControllablePlate_Arrow().getBallSpeedManipulator().getCooldown()) + " S", 768, 35);
         } else {
-            gc.drawImage(Images.readyIcon, 792, 15);
+            gc.drawImage(Images.readyIcon, 772, 15);
         }
         if (Math.round(getControllablePlate_Arrow().getPointStealer().getCooldown()) > 0) {
-            gc.fillText(Math.round(getControllablePlate_Arrow().getPointStealer().getCooldown()) + " S", 955, 35);
+            gc.fillText(Math.round(getControllablePlate_Arrow().getPointStealer().getCooldown()) + " S", 935, 35);
         } else {
-            gc.drawImage(Images.readyIcon, 959, 15);
+            gc.drawImage(Images.readyIcon, 939, 15);
         }
         if (Math.round(enemyPlate.getBallSpeedManipulator().getCooldown()) > 0) {
             gc.fillText(Math.round(enemyPlate.getBallSpeedManipulator().getCooldown()) + " S", 65, 35);
