@@ -27,15 +27,15 @@ PongPlusPlus (Pong++) handelt sich um ein Player VS PC Pong spiel mit Fähigkeit
 ## Klassendiagramm:
 ![PongPlusPlus UML](GUI%20Screenshots/UML.png?raw=true)
 
-###Gameobject: Alle auf dem Screen zusehende Objekt erbben von dieser Klasse. Enthalteten(X/Y) Variablen, abstrakte update Methoden etc.
-Ball: Enthaltet die Logik vom Ball und erbt von Gameobject.
-PlateObject: Eine Erweiterung der Klasse Gameobject, enthält spezielle Methoden.
-BaseScene: Alle Szenen erben von dieser Klasse, enthält die Gemeinsamkeit aller Szenen.
-GodLikeAnimationTimer: Enthält den Timer welchen wir im Spiel brauchen.
-BallSppedManipulator: Enthält die Fähigkeit, die Ball Geschwindigkeit manipuliert.
-PongPlusPlusApp: In dieser Klasse werden alle Szenen registriert.
-Board: Zeichnet alle In-game Elemente und Enthält alle in-game Logik.
-GameSetting: Enthält alle Game Einstellungen
+- Gameobject: Alle auf dem Screen zusehende Objekt erbben von dieser Klasse. Enthalteten(X/Y) Variablen, abstrakte update Methoden etc.
+- Ball: Enthaltet die Logik vom Ball und erbt von Gameobject.
+- PlateObject: Eine Erweiterung der Klasse Gameobject, enthält spezielle Methoden.
+- BaseScene: Alle Szenen erben von dieser Klasse, enthält die Gemeinsamkeit aller Szenen.
+- GodLikeAnimationTimer: Enthält den Timer welchen wir im Spiel brauchen.
+- BallSppedManipulator: Enthält die Fähigkeit, die Ball Geschwindigkeit manipuliert.
+- PongPlusPlusApp: In dieser Klasse werden alle Szenen registriert.
+- Board: Zeichnet alle In-game Elemente und Enthält alle in-game Logik.
+- GameSetting: Enthält alle Game Einstellungen
 
 # Fazit
 
