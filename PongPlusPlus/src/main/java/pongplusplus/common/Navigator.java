@@ -7,7 +7,6 @@ import pongplusplus.gui.GameOverScene;
 import pongplusplus.gui.GamemodeSelectionScene;
 import pongplusplus.gui.InfoScene;
 import pongplusplus.gui.DifficultySelectionScene;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -11,7 +11,7 @@ import pongplusplus.gui.*;
 
 import javax.swing.*;
 
-public class  PongPlusPlusApp extends Application {
+public class PongPlusPlusApp extends Application {
     @Override
     public void start(Stage stage) {
         Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
@@ -35,6 +35,7 @@ public class  PongPlusPlusApp extends Application {
         stage.setMaxWidth(Const.SCREEN_WIDTH);
         stage.show();
     }
+
     public static void main(String[] args) {
         launch(args);
     }

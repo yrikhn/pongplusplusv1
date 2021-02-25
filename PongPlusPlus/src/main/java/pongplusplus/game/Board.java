@@ -6,7 +6,6 @@ import javafx.scene.text.Font;
 import pongplusplus.common.Navigator;
 import pongplusplus.common.Util;
 import pongplusplus.game.gameobjects.*;
-
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Board extends CopyOnWriteArrayList<Gameobject> {
@@ -17,7 +16,6 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
     private GameSetting gameSetting;
     private PlateObject enemyPlate;
 
-
     public Board(KeyEventHandler keyEventHandler, Navigator navigator, Runnable gameLoopStopper, Score score, GameSetting gameSetting) {
         this.keyEventHandler = keyEventHandler;
         this.gameLoopStopper = gameLoopStopper;
@@ -25,7 +23,6 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         this.score = score;
         this.gameSetting = gameSetting;
     }
-
 
     public void generateObject() {
         add(new Ball(Const.SCREEN_WIDTH / 2, Const.SCREEN_WIDTH / 2, this, gameSetting.getDifficulty(), score));
@@ -45,7 +42,6 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
             enemyPlate = getControllablePlate_WASD();
         }
     }
-
 
     public void update(double deltaInSec) {
         if (score.isPlayerWon()) {

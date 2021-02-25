@@ -53,7 +53,7 @@ public class DifficultySelectionScene extends BaseScene implements Initializable
         info.setLayoutY(20);
         Style.changeStyle(easy, 135, 75);
         Style.changeStyle(medium, 135, 75);
-        Style.changeStyle(hard,135,75);
+        Style.changeStyle(hard, 135, 75);
         Style.changeStyle(info, 95, 50);
         Group root = new Group();
         welcomeScene = new Scene(root);
@@ -63,6 +63,4 @@ public class DifficultySelectionScene extends BaseScene implements Initializable
     public static Scene getScene() {
         return welcomeScene;
     }
-
-
 }

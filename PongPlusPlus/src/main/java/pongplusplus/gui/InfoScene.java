@@ -27,13 +27,13 @@ public class InfoScene extends BaseScene implements Initializable {
         Button returnButton = new Button("RETURN");
         returnButton.setLayoutX(433);
         returnButton.setLayoutY(475);
-        Style.changeStyle(returnButton,135,75);
+        Style.changeStyle(returnButton, 135, 75);
         root.getChildren().addAll(backgroundImage, returnButton);
         returnButton.setOnAction(e -> {
             if (gameSetting.isGamemodeSelected()) {
                 navigator.goTo(SceneType.DIFFICULTY_SELECTION);
                 Sound.play(SoundEffectType.ONCLICK);
-            }else{
+            } else {
                 navigator.goTo(SceneType.GAMEMODE_SELECTION);
                 Sound.play(SoundEffectType.ONCLICK);
             }
