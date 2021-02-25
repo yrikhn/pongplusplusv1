@@ -24,6 +24,19 @@ PongPlusPlus (Pong++) handelt sich um ein Player VS PC Pong spiel mit Fähigkeit
 ### Gameover:
 ![PongPlusPlus Gameover Scene](GUI%20Screenshots/gameover.png?raw=true)
 
+## Klassendiagramm:
+![PongPlusPlus UML](GUI%20Screenshots/UML.png?raw=true)
+
+Gameobject: Alle auf dem Screen zusehende Objekt erbben von dieser Klasse. Enthalteten(X/Y) Variablen, abstrakte update Methoden etc.
+Ball: Enthaltet die Logik vom Ball und erbt von Gameobject.
+PlateObject: Eine Erweiterung der Klasse Gameobject, enthält spezielle Methoden.
+BaseScene: Alle Szenen erben von dieser Klasse, enthält die Gemeinsamkeit aller Szenen.
+GodLikeAnimationTimer: Enthält den Timer welchen wir im Spiel brauchen.
+BallSppedManipulator: Enthält die Fähigkeit, die Ball Geschwindigkeit manipuliert.
+PongPlusPlusApp: In dieser Klasse werden alle Szenen registriert.
+Board: Zeichnet alle In-game Elemente und Enthält alle in-game Logik.
+GameSetting: Enthält alle Game Einstellungen
+
 # Fazit
 
 Mit dem Endergebnis sind wir beide sehr zufrieden. Das was entstanden ist, entspricht unsere Vorstellung von unserem Produkt und ist sogar besser rausgekommen als wir uns vorstellten. Es gibt in diesem Projekt fast nichts Schlechtes zu erwähnen. Wir waren immer gut unterwegs und waren uns einig. Daher sparten wir viel Zeit beim Entscheidungen treffen. Beim Programmieren lief alles wunderbar.
