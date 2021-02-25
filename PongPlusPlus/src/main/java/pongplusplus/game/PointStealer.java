@@ -10,13 +10,11 @@ public class PointStealer {
     private Score score;
     private Gameobject player;
 
-
     public PointStealer(Board board, Gameobject player) {
         this.board = board;
         this.score = board.getScore();
         this.player = player;
     }
-
 
     public void update(double deltaInSec) {
         if (cooldown >= 0) {

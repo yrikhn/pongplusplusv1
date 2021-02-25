@@ -31,7 +31,6 @@ public class GameOverScene extends BaseScene implements Initializable {
         announcement.setStyle(Const.TEXT_STYLE);
         announcement.setLayoutX(410);
         announcement.setLayoutY(355);
-        score.resetScore();
         Button restart = new Button("RESTART");
         restart.setLayoutX(298);
         restart.setLayoutY(425);

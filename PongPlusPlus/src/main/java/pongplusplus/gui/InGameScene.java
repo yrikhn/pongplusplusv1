@@ -31,9 +31,6 @@ public class InGameScene extends BaseScene implements Initializable {
             }
         };
         gameLoop.start();
-
     }
-
-
 }
 

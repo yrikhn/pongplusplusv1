@@ -1,6 +1,5 @@
 package pongplusplus.game.gameobjects;
 
-
 import pongplusplus.game.*;
 
 public class Ball extends Gameobject {
@@ -33,8 +32,6 @@ public class Ball extends Gameobject {
         pos_y += balldiry;
     }
 
-
-
     private void checkWin() {
         if (pos_x + Const.BALL_HEIGHT_WIDTH >= Const.SCREEN_WIDTH) {
             pos_x = Const.SCREEN_WIDTH / 2 - 10;
@@ -51,7 +48,6 @@ public class Ball extends Gameobject {
         }
     }
 
-
     private void borderCollisionCheck() {
         if (pos_y + Const.BALL_HEIGHT_WIDTH >= Const.SCREEN_HEIGHT) {
             balldiry = -SPEED;
@@ -65,11 +61,11 @@ public class Ball extends Gameobject {
     }
 
     private void plateCollisionCheck() {
-        if (pos_x < board.getControllablePlate_Arrow().pos_x && pos_x > board.getControllablePlate_Arrow().pos_x - 20 && pos_y - Const.BALL_HEIGHT_WIDTH < board.getControllablePlate_Arrow().pos_y + Const.PLATE_HEIGHT && pos_y > board.getControllablePlate_Arrow().pos_y) {
+        if (pos_x < board.getControllablePlate_Arrow().pos_x && pos_x > board.getControllablePlate_Arrow().pos_x - 20 && pos_y < board.getControllablePlate_Arrow().pos_y + Const.PLATE_HEIGHT && pos_y > board.getControllablePlate_Arrow().pos_y) {
             balldirx = -SPEED;
             Sound.play(SoundEffectType.ONHIT);
         }
-        if (pos_x < board.getEnemyPlate().pos_x && pos_x > board.getEnemyPlate().pos_x - 10 && pos_y - Const.BALL_HEIGHT_WIDTH < board.getEnemyPlate().pos_y + Const.PLATE_HEIGHT && pos_y > board.getEnemyPlate().pos_y) {
+        if (pos_x < board.getEnemyPlate().pos_x && pos_x > board.getEnemyPlate().pos_x - 10 && pos_y < board.getEnemyPlate().pos_y + Const.PLATE_HEIGHT && pos_y > board.getEnemyPlate().pos_y) {
             balldirx = SPEED;
             Sound.play(SoundEffectType.ONHIT);
         }
@@ -91,5 +87,4 @@ public class Ball extends Gameobject {
     public void resetSpeed() {
         SPEED = originalSpeed;
     }
-
 }

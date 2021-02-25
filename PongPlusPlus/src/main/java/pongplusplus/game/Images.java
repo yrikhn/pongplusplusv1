@@ -12,6 +12,11 @@ public class Images {
     public final static Image readyIcon = getImage("images/ready.png");
     public final static Image whileAbilityBall = getImage("images/whileAbility.png");
     private static Image getImage(String imagePath) {
-        return new Image(imagePath);
+        try{
+            return new Image(imagePath);
+        }
+        catch (Exception e){
+            throw new RuntimeException("Could not load file");
+        }
     }
 }

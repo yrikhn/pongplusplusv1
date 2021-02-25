@@ -40,5 +40,4 @@ public class Navigator {
         }
         stage.setScene(activeScene);
     }
-
 }

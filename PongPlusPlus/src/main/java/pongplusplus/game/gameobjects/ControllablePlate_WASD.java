@@ -12,7 +12,6 @@ public class ControllablePlate_WASD extends PlateObject {
 
     }
 
-
     @Override
     public void checkMovement(double deltaInSec){
         if (keyEventHandler.isWKeyPressed() && pos_y > Const.TOP_BORDER_Y_POSITION) {
@@ -35,5 +34,4 @@ public class ControllablePlate_WASD extends PlateObject {
             activatePointStealer();
         }
     }
-
 }

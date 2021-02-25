@@ -2,15 +2,13 @@ package pongplusplus.game.gameobjects;
 
 import pongplusplus.game.*;
 
-public class ControllablePlate_Arrow extends PlateObject{
+public class ControllablePlate_Arrow extends PlateObject {
     private KeyEventHandler keyEventHandler;
-
 
     public ControllablePlate_Arrow(KeyEventHandler keyEventHandlerArrow, int x, int y, Board board) {
         super(x, y, Images.plate, board);
         this.keyEventHandler = keyEventHandlerArrow;
     }
-
 
     @Override
     public void checkMovement(double deltaInSec) {
@@ -28,12 +26,10 @@ public class ControllablePlate_Arrow extends PlateObject{
         }
     }
 
-
     @Override
     public void checkPointStealerActivation() {
-        if (keyEventHandler.isRightKeyPressed() && pointStealer.getCooldown() <= 0 && board.getScore().getEnemyScore() != 0){
+        if (keyEventHandler.isRightKeyPressed() && pointStealer.getCooldown() <= 0 && board.getScore().getEnemyScore() != 0) {
             activatePointStealer();
         }
-
     }
 }

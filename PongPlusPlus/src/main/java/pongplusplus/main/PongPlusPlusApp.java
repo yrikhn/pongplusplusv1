@@ -16,6 +16,7 @@ public class  PongPlusPlusApp extends Application {
     public void start(Stage stage) {
         Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
             // TODO: Logging
+            System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(null, "Something goes wrong!");
         });
         stage.setTitle("PONG++");
@@ -33,11 +34,8 @@ public class  PongPlusPlusApp extends Application {
         stage.setMinWidth(Const.SCREEN_WIDTH);
         stage.setMaxWidth(Const.SCREEN_WIDTH);
         stage.show();
-
     }
     public static void main(String[] args) {
-
         launch(args);
     }
-
 }

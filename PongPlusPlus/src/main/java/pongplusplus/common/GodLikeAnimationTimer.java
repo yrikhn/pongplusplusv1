@@ -15,9 +15,7 @@ public abstract class GodLikeAnimationTimer extends AnimationTimer {
     public final void handle(long currentTimeInNanoSec) {
         long deltaInNanoSec = currentTimeInNanoSec - lastTimeInNanoSec;
         double deltaInSec = deltaInNanoSec / 1e9;
-
         doHandle(deltaInSec);
-
         lastTimeInNanoSec = currentTimeInNanoSec;
     }
 

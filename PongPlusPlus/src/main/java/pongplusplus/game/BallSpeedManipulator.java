@@ -15,9 +15,7 @@ public class BallSpeedManipulator {
         this.pos_x = pos_x;
     }
 
-
     public void update(double deltaInSec) {
-
         if (cooldown >= 0) {
             cooldown -= deltaInSec;
         }
@@ -39,11 +37,9 @@ public class BallSpeedManipulator {
                 }
             }
         }
-
         if (startTime <= 0) {
             deactivate();
         }
-
     }
 
     public void activate() {

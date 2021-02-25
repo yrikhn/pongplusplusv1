@@ -60,7 +60,6 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         }
     }
 
-
     public void draw(GraphicsContext gc) {
         gc.clearRect(0, 0, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
         gc.setFill(Paint.valueOf("#000000"));
@@ -68,36 +67,30 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         gc.setFill(Paint.valueOf("#FFFFFF"));
         gc.fillRect(494.5, 0, 11, Const.SCREEN_HEIGHT);
         gc.fillRect(0, 50, Const.SCREEN_WIDTH, 11);
-
         gc.setFont(new Font(30));
         gc.fillText("A : ", 23, 35);
         gc.fillText("D : ", 167, 35);
-
         gc.fillText("<- : ", 738, 35);
         gc.fillText("-> : ", 907, 35);
-
         displayAbilityAvailability(gc);
         gc.setFont(new Font(40));
         gc.fillText("" + score.getEnemyScore(), 445, 35);
         gc.fillText("" + score.getPlayerScore(), 529, 35);
-
         for (Gameobject object : this) {
             object.draw(gc);
         }
-
     }
-
 
     private void displayAbilityAvailability(GraphicsContext gc) {
         if (Math.round(getControllablePlate_Arrow().getBallSpeedManipulator().getCooldown()) > 0) {
-            gc.fillText(Math.round(getControllablePlate_Arrow().getBallSpeedManipulator().getCooldown()) + " S", 798, 35);
+            gc.fillText(Math.round(getControllablePlate_Arrow().getBallSpeedManipulator().getCooldown()) + " S", 788, 35);
         } else {
-            gc.drawImage(Images.readyIcon, 793, 15);
+            gc.drawImage(Images.readyIcon, 792, 15);
         }
         if (Math.round(getControllablePlate_Arrow().getPointStealer().getCooldown()) > 0) {
-            gc.fillText(Math.round(getControllablePlate_Arrow().getPointStealer().getCooldown()) + " S", 965, 35);
+            gc.fillText(Math.round(getControllablePlate_Arrow().getPointStealer().getCooldown()) + " S", 955, 35);
         } else {
-            gc.drawImage(Images.readyIcon, 960, 15);
+            gc.drawImage(Images.readyIcon, 959, 15);
         }
         if (Math.round(enemyPlate.getBallSpeedManipulator().getCooldown()) > 0) {
             gc.fillText(Math.round(enemyPlate.getBallSpeedManipulator().getCooldown()) + " S", 65, 35);
@@ -115,7 +108,6 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
     public Ball getBall() {
         return Util.getAllObjectsFromType(Ball.class, this).get(0);
     }
-
 
     public ControllablePlate_Arrow getControllablePlate_Arrow() {
         return Util.getAllObjectsFromType(ControllablePlate_Arrow.class, this).get(0);
@@ -141,6 +133,4 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
         gameLoopStopper.run();
         clear();
     }
-
-
 }

@@ -19,5 +19,4 @@ public abstract class BaseScene extends Scene {
         gc = canvas.getGraphicsContext2D();
         ((Group) getRoot()).getChildren().add(canvas);
     }
-
 }

@@ -40,6 +40,7 @@ public class KeyEventHandler implements EventHandler<KeyEvent> {
                 break;
             case D:
                 isDKeyPressed = pressed;
+                break;
         }
     }
     public boolean isUpKeyPressed() {
@@ -69,6 +70,7 @@ public class KeyEventHandler implements EventHandler<KeyEvent> {
     public boolean isAKeyPressed() {
         return isAKeyPressed;
     }
+
     public boolean isDKeyPressed() {
         return isDKeyPressed;
     }
