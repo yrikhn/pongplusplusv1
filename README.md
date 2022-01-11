@@ -30,6 +30,12 @@ PongPlusPlus (Pong++) handelt sich um ein Player VS PC Pong spiel mit Fähigkeit
 ## Klassendiagramm:
 ![PongPlusPlus UML](GUI%20Screenshots/UML.png?raw=true)
 
+## Usecase diagram:
+![Usecase](GUI%20Screenshots/usecase_diagrampongplusplus.png?raw=true)
+
+## Sequence diagram:
+![Sequence diagram](GUI%20Screenshots/pongplusplus_sequencediagram.png?raw=true)
+
 - Gameobject: Alle auf dem Screen zusehende Objekt erbben von dieser Klasse. Enthalteten(X/Y) Variablen, abstrakte update Methoden etc.
 - Ball: Enthaltet die Logik vom Ball und erbt von Gameobject.
 - PlateObject: Eine Erweiterung der Klasse Gameobject, enthält spezielle Methoden.
