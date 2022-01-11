@@ -10,7 +10,7 @@ public class Score {
         playerScore++;
     }
 
-    public void addGegnerPoints() {
+    public void addEnemyPoints() {
         enemyScore++;
     }
 
@@ -62,4 +62,11 @@ public class Score {
         playerScore++;
     }
 
+    public void setEnemyScore(int enemyScore) {
+        this.enemyScore = enemyScore;
+    }
+
+    public void setPlayerScore(int playerScore) {
+        this.playerScore = playerScore;
+    }
 }

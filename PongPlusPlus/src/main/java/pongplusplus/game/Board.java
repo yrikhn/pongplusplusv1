@@ -27,19 +27,18 @@ public class Board extends CopyOnWriteArrayList<Gameobject> {
     public void generateObject() {
         add(new Ball(Const.SCREEN_WIDTH / 2, Const.SCREEN_WIDTH / 2, this, gameSetting.getDifficulty(), score));
         add(new ControllablePlate_Arrow(keyEventHandler, 970, 280, this));
-        decideGamemode();
-
+        enemyPlate = decideGamemode(gameSetting.isSingleplayer());
     }
 
-    public void decideGamemode() {
-        if (gameSetting.isSingleplayer()) {
+    public PlateObject decideGamemode(Boolean isSinglePlayer) {
+        if (isSinglePlayer) {
             add(new ComputerPlate(280, this, getControllablePlate_Arrow()));
             getControllablePlate_Arrow().setEnemyPlate(getComputerPlate());
-            enemyPlate = getComputerPlate();
+            return getComputerPlate();
         } else {
             add(new ControllablePlate_WASD(keyEventHandler, 28, 280, this, getControllablePlate_Arrow()));
             getControllablePlate_Arrow().setEnemyPlate(getControllablePlate_WASD());
-            enemyPlate = getControllablePlate_WASD();
+            return getControllablePlate_WASD();
         }
     }
 

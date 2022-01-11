@@ -37,7 +37,7 @@ public class Ball extends Gameobject {
             pos_x = Const.SCREEN_WIDTH / 2 - 10;
             pos_y = Const.SCREEN_HEIGHT / 2 - 10;
             balldirx = -SPEED;
-            score.addGegnerPoints();
+            score.addEnemyPoints();
         }
         if (pos_x <= 0) {
             pos_x = Const.SCREEN_WIDTH / 2 - 10;
